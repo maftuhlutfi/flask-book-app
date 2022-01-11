@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --orange: #F96709;
+    --text-primary: #222527;
+    --text-secondary: #484F54;
+    --disabled: #A6ADB8;
+    --orange-1: #FFB281;
+    --orange-2: #FFF3EB;
+    --linear-orange: linear-gradient(314.2deg, #FB680A 0%, #FFB484 104.06%);
+}
+
+* {
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+}
+
+
+i {
+    display: flex;
+}
+
+i.fill-linear-orange {
+    background: var(--linear-orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 18px;
+    border: none;
+    font-weight: 600;
+    min-width: 108px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--linear-orange);
+    color: white;
+}
+
+.btn.primary:hover {
+    background: var(--orange);
+}
+
+.btn.primary.outlined {
+    background: none;
+    color: var(--text-primary);
+    border: solid 1px var(--orange);
+}
+
+.btn.primary.outlined:hover {
+    background: var(--orange);
+    color: white; 
+}
+
+.btn.btn-other-login {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    background: white;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.btn.btn-google {
+    border: solid 1px #e1e1e1;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07);
+}
+
+.btn.btn-facebook {
+    background-color: #19638C;
+    color: white;
+}
+
+.btn.btn-facebook i {
+    color: white;
+    font-size: 24px;
+    margin: 6px 8px;
+}
+
+.btn.btn-facebook span {
+    color: white;
+}
+
+.btn.btn-other-login span {
+    margin-left: 16px;
+}
+
+input {
+    padding: 16px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--orange-2);
+    font-size: 16px;
+}
+
+.full {
+    width: 100%;
+}
