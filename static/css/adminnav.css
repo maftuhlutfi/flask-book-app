@@ -1,0 +1,38 @@
+aside.wrapper {
+  width: 280px;
+  height: 100vh;
+  padding: 40px;
+  background-color: white;
+  position: fixed;
+}
+
+aside .menu-list {
+  margin-top: 64px;
+}
+
+a.menu {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 48px;
+  cursor: pointer;
+}
+
+.menu,
+.menu i {
+  color: var(--disabled);
+}
+
+.menu i {
+  font-size: 24px;
+  margin-right: 16px;
+}
+
+.menu.active,
+.menu.menu.active i {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--linear-orange);
+  font-weight: 600;
+}

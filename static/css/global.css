@@ -147,6 +147,12 @@ a.logo {
   border-radius: 16px;
 }
 
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
 .search-input {
   position: relative;
 }
@@ -172,4 +178,17 @@ a.logo {
 
 .rating-disabled {
   color: #e7e2d2;
+}
+
+.admin-container {
+  width: 100%;
+  padding: 40px;
+  padding-left: 320px;
+}
+
+.icon-linear-primary {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--linear-orange);
 }

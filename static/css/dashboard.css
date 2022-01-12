@@ -1,0 +1,35 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px;
+}
+
+.stats .card i {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.stats .card p {
+  margin-bottom: 8px;
+}
+
+.stats .card h3 {
+  font-size: 24px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.charts .chart {
+  width: 90%;
+  position: relative;
+  margin: auto;
+}
+
+.card .card-title {
+  margin-bottom: 24px;
+}

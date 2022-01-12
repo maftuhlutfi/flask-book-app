@@ -14,3 +14,7 @@ def login():
 @app.route('/<string:book_id>')
 def book(book_id):
     return render_template('book.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
