@@ -1,0 +1,44 @@
+.scrap-form {
+  margin: 8px 0;
+}
+
+.scrap-form > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+textarea.link {
+  height: 140px;
+}
+
+.scrap-btn-group {
+  display: flex;
+  justify-content: end;
+}
+
+.scrap-btn-group button:first-child {
+  margin-right: 20px;
+}
+
+.card-scrap {
+  margin-top: 40px;
+}
+
+.log-list {
+  height: 240px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 16px;
+  background-color: var(--orange-2);
+  border-radius: 8px;
+}
+
+.log-list li {
+  margin: 0;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+span.success {
+  font-weight: 600;
+  color: rgb(59, 201, 59);
+}

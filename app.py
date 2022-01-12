@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__, static_url_path='', static_folder='static')
 app.config['SECRET_KEY'] = 'flask-book-movie-kelompok'
@@ -26,3 +26,13 @@ def dashboard():
 @app.route('/catalog')
 def catalog():
     return render_template('catalog.html')
+
+@app.route('/scrap')
+def scrap():
+    return render_template('scrap.html')
+
+@app.route('/test')
+def test():
+    return jsonify({
+        'message': 'asdasd'
+    })

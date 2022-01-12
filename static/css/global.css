@@ -75,8 +75,7 @@ i.fill-linear-orange {
 }
 
 .btn.primary.outlined:hover {
-  background: var(--orange);
-  color: white;
+  background: var(--orange-2);
 }
 
 .btn.btn-other-login {
@@ -113,7 +112,8 @@ i.fill-linear-orange {
 }
 
 input,
-select {
+select,
+textarea {
   padding: 16px 20px;
   border-radius: 20px;
   border: none;
