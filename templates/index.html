@@ -2,6 +2,98 @@
 
 {% block title %} Home - Book Apps {% endblock %}
 
-{% block content %}
+{% block link %} <link rel="stylesheet" href="css/index.css"> {% endblock %}
 
+{% block content %}
+    <nav class="nav">
+        <a href='/' class="logo">BookApp</a>
+        <div class="search-input">
+            <input type="text" name="search" placeholder="Search books" /> 
+            <i class="icon-search"></i>
+        </div>
+        <a href="/login">
+            <button class="btn primary">Login</button>
+        </a>
+    </nav>
+    <div class="container">
+        <aside class="filter-wrapper">
+            <div class="card filter-title">
+                <i class="icon-filter"></i>
+                <div>Filter</div>
+            </div>
+            <div class="card filter-body">
+                <div class="filter-wrap">
+                    <div class="title">Genre</div>
+                    <ul class="filter-list">
+                        <li class="filter-item active">
+                            Fiction
+                        </li>
+                        <li class="filter-item">
+                            Romance
+                        </li>
+                        <li class="filter-item">
+                            Sci-Fi
+                        </li>
+                        <li class="filter-item">
+                            Young Adult Fiction
+                        </li>
+                    </ul>
+                </div>
+                <div class="filter-wrap">
+                    <div class="title">Languages</div>
+                    <ul class="filter-list">
+                        <li class="filter-item active">
+                            Indonesian
+                        </li>
+                        <li class="filter-item">
+                            English
+                        </li>
+                    </ul>
+                </div>
+                <div class="filter-wrap">
+                    <div class="title">Published Year</div>
+                    <div class="published-year">
+                        <input type="text" />
+                        <span>-</span>
+                        <input type="text" />
+                    </div>
+                </div>
+                <button class="btn primary">Apply</button>
+            </div>
+        </aside>
+        <main>
+            <div class="header">
+                <h1 class="title">Explore Books</h1>
+                <div class="sort">
+                    <label for="sort">Sort By</label>
+                    <select id="sort" name="sort">
+                        <option value="newest">Newest</option>
+                        <option value="newest">Oldest</option>
+                        <option value="newest">Low Price</option>
+                        <option value="newest">High Price</option>
+                        <option value="newest">Top Rating</option>
+                        <option value="newest">Low Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="book-list">
+                {% for x in range(6) %}
+                <a href="#" class="book-item">
+                    <img src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w400-h600" alt="note-of-kim" />
+                    <div class="rating-price">
+                        <div class="rating">
+                            <i class="icon-star"></i>
+                            4.2
+                        </div>
+                        <p class="price">$12</p>
+                    </div>
+                    <div>
+                        <p class="title">Note of Kim</p>
+                        <span class="author text-secondary">Fanny Fatullah</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
 {% endblock %} %}

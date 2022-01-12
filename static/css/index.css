@@ -1,0 +1,171 @@
+.container {
+  margin: auto;
+  margin-top: 32px;
+  padding: 0px 40px;
+  max-width: 1536px;
+  position: relative;
+  display: flex;
+}
+
+.filter-wrapper {
+  flex-shrink: 0;
+  width: 320px;
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.filter-title i {
+  font-size: 24px;
+  margin-right: 16px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--linear-orange);
+}
+
+.filter-body > div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.filter-wrap .title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.filter-wrap ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.filter-list li {
+  padding: 8px 16px;
+  border: solid 1px var(--orange-1);
+  font-size: 14px;
+  border-radius: 20px;
+  margin: 8px 16px 8px 0;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.filter-list li.active {
+  background-color: var(--orange-2);
+}
+
+.published-year {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.published-year input {
+  width: 80px;
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.published-year span {
+  margin: 0 16px;
+}
+
+.filter-body button {
+  margin-top: 16px;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  margin-left: 32px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.header .title {
+  font-size: 24px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+}
+
+.sort label {
+  margin-right: 16px;
+  font-weight: 500;
+}
+
+.sort select {
+  background: white;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.book-item {
+  width: 100%;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.book-item > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.book-item img {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.book-item .rating {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  width: min-content;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.book-item .rating-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rating-price .price {
+  color: var(--orange-1);
+  font-weight: 600;
+}
+
+.rating i {
+  color: #ffcd1d;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.book-item .title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.book-item .author {
+  font-size: 12px;
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Book 1 {% endblock %}
+
+{% block link %} <link rel="stylesheet" href="css/book.css"> {% endblock %}
+
+{% block content %}
+    <nav class="nav">
+        <a href='/' class="logo">BookApp</a>
+        <div class="search-input">
+            <input type="text" name="search" placeholder="Search books" /> 
+            <i class="icon-search"></i>
+        </div>
+        <a href="/login">
+            <button class="btn primary">Login</button>
+        </a>
+    </nav>
+    <div class="container">
+        <div class="book-info">
+            
+        </div>
+    </div>
+{% endblock %} %}

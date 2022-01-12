@@ -1,112 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
-    --orange: #F96709;
-    --text-primary: #222527;
-    --text-secondary: #484F54;
-    --disabled: #A6ADB8;
-    --orange-1: #FFB281;
-    --orange-2: #FFF3EB;
-    --linear-orange: linear-gradient(314.2deg, #FB680A 0%, #FFB484 104.06%);
+  --orange: #f96709;
+  --text-primary: #222527;
+  --text-secondary: #484f54;
+  --disabled: #a6adb8;
+  --orange-1: #ffb281;
+  --orange-2: #fff3eb;
+  --linear-orange: linear-gradient(314.2deg, #fb680a 0%, #ffb484 104.06%);
 }
 
 * {
-    color: var(--text-primary);
-    font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
-    margin: 0;
+  color: var(--text-primary);
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-disabled {
+  color: var(--disabled);
+}
+
+*:focus {
+  outline: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+
+  background-color: #fdf7f3;
 }
 
-
 i {
-    display: flex;
+  display: flex;
 }
 
 i.fill-linear-orange {
-    background: var(--linear-orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: var(--linear-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .btn {
-    padding: 12px 16px;
-    border-radius: 16px;
-    font-size: 18px;
-    border: none;
-    font-weight: 600;
-    min-width: 108px;
-    cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 18px;
+  border: none;
+  font-weight: 600;
+  min-width: 108px;
+  cursor: pointer;
 }
 
 .btn.primary {
-    background: var(--linear-orange);
-    color: white;
+  background: var(--linear-orange);
+  color: white;
 }
 
 .btn.primary:hover {
-    background: var(--orange);
+  background: var(--orange);
 }
 
 .btn.primary.outlined {
-    background: none;
-    color: var(--text-primary);
-    border: solid 1px var(--orange);
+  background: none;
+  color: var(--text-primary);
+  border: solid 1px var(--orange);
 }
 
 .btn.primary.outlined:hover {
-    background: var(--orange);
-    color: white; 
+  background: var(--orange);
+  color: white;
 }
 
 .btn.btn-other-login {
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    background: white;
-    font-weight: 400;
-    font-size: 18px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  background: white;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .btn.btn-google {
-    border: solid 1px #e1e1e1;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07);
+  border: solid 1px #e1e1e1;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.07);
 }
 
 .btn.btn-facebook {
-    background-color: #19638C;
-    color: white;
+  background-color: #19638c;
+  color: white;
 }
 
 .btn.btn-facebook i {
-    color: white;
-    font-size: 24px;
-    margin: 6px 8px;
+  color: white;
+  font-size: 24px;
+  margin: 6px 8px;
 }
 
 .btn.btn-facebook span {
-    color: white;
+  color: white;
 }
 
 .btn.btn-other-login span {
-    margin-left: 16px;
+  margin-left: 16px;
 }
 
-input {
-    padding: 16px 20px;
-    border-radius: 20px;
-    border: none;
-    background-color: var(--orange-2);
-    font-size: 16px;
+input,
+select {
+  padding: 16px 20px;
+  border-radius: 20px;
+  border: none;
+  background-color: var(--orange-2);
+  font-size: 16px;
 }
 
 .full {
-    width: 100%;
+  width: 100%;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 40px;
+  max-width: 1536px;
+  position: relative;
+  margin: auto;
+}
+
+a.logo {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.card {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 16px;
+}
+
+.search-input {
+  position: relative;
+}
+
+.search-input input {
+  width: 500px;
+  padding: 12px 16px 12px 56px;
+  background: white;
+}
+
+.search-input i {
+  font-size: 24px;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--disabled);
 }
