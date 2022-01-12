@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %} Catalog {% endblock %}
+
+{% block link %} 
+<link rel="stylesheet" href="css/dashboardtop.css">
+<link rel="stylesheet" href="css/catalog.css">
+{% endblock %}
+
+{% block content %}
+    {% include 'adminnav.html' %}
+
+    <main class="admin-container">
+        <div class="dashboard-top-wrapper">
+            <div class="greet">
+                <p class="subtitle text-secondary">
+                    Manage Books
+                </p>
+                <h1 class="title">
+                    Catalog
+                </h1>
+            </div>
+            <img src="images/admin.jpg" alt="" srcset="">
+        </div>
+        <div class="catalog-button-group">
+            <button class="btn primary">Import CSV</button>
+        </div>
+        <table class="catalog-table" cellspacing='0' cellpadding="0">
+            <thead>
+                <tr class="row-head">
+                    <th width='5%'>No</th>
+                    <th width='10%'>Image</th>
+                    <th width='15%'>Title</th>
+                    <th width='15%'>Author</th>
+                    <th width='15%'>Published Date</th>
+                    <th width='10%'>Status</th>
+                    <th width='20%'>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-book">
+                    <td width='5%'>1</td>
+                    <td width='10%'>
+                        <img class="book-img" src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w60-h90" alt="book-img" />
+                    </td>
+                    <td width='15%'>Note of Kim</td>
+                    <td width='15%'>Fanny Fatullah</td>
+                    <td width='15%'>2021</td>
+                    <td width='10%'>
+                        <input type="checkbox" id="status" class="input-switch" name="status" />
+                        <label for="status" class="label-switch">
+                            <div></div>
+                        </label>
+                    </td>
+                    <td width='20%'>
+                        <div class="action">
+                            <i class="icon-info icon-linear-primary"></i>
+                            <i class="icon-edit icon-linear-primary"></i>
+                            <i class="icon-delete icon-linear-primary"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="row-book">
+                    <td width='5%'>1</td>
+                    <td width='10%'>
+                        <img class="book-img" src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w60-h90" alt="book-img" />
+                    </td>
+                    <td width='15%'>Note of Kim</td>
+                    <td width='15%'>Fanny Fatullah</td>
+                    <td width='15%'>2021</td>
+                    <td width='10%'>
+                        <input type="checkbox" id="status" class="input-switch" name="status" />
+                        <label for="status" class="label-switch">
+                            <div></div>
+                        </label>
+                    </td>
+                    <td width='20%'>
+                        <div class="action">
+                            <i class="icon-info icon-linear-primary"></i>
+                            <i class="icon-edit icon-linear-primary"></i>
+                            <i class="icon-delete icon-linear-primary"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/catalog.js"></script>
+{% endblock %}

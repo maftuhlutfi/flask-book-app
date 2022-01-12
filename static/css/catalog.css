@@ -1,0 +1,54 @@
+.catalog-button-group {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 40px;
+}
+
+.catalog-table {
+  width: 100%;
+}
+
+.catalog-table th,
+.catalog-table td {
+  text-align: center;
+  padding: 16px;
+}
+
+.catalog-table th {
+  border-bottom: solid 20px #fdf7f3;
+}
+
+.catalog-table td {
+  border-bottom: solid 16px #fdf7f3;
+}
+
+.catalog-table tbody {
+  background-color: white;
+}
+
+.catalog-table th:first-child {
+  border-radius: 16px 0 0 0;
+}
+
+.catalog-table th:last-child {
+  border-radius: 0 16px 0 0;
+}
+
+.catalog-table tr.row-head {
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+td .action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+td .action i {
+  font-size: 36px;
+  margin: 0 6px;
+  cursor: pointer;
+}

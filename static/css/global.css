@@ -192,3 +192,37 @@ a.logo {
   color: transparent;
   background-image: var(--linear-orange);
 }
+
+.input-switch {
+  display: none;
+}
+
+.label-switch div {
+  width: 64px;
+  height: 32px;
+  background: #e0e0e0;
+  position: relative;
+  margin: auto;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.label-switch div::after {
+  content: "";
+  width: 32px;
+  height: 32px;
+  background: var(--disabled);
+  position: absolute;
+  left: 0;
+  border-radius: 16px;
+  transition: all ease-in-out 0.1s;
+}
+
+input:checked + .label-switch div {
+  background: var(--orange-2);
+}
+
+input:checked + .label-switch div::after {
+  background: var(--linear-orange);
+  left: 32px;
+}
