@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+{% block link %} 
+
+<link rel="stylesheet" href="css/registerstyle.css">
+{% endblock %}
+{% block content %}
+    <div class="container signup">
+        <div class="wrapper">
+            <div class="signup-text">
+                <h1>Sign up</h1>
+                <p>Please fill form below to start explore our features</p>
+            </div>
+            <form class="input-wrapper full">
+                    <input class="full" id="email" type="text" placeholder="Email">
+                    <input class="full" id="password" type="password" placeholder="Password">
+                    <input class="full" id="password" type="password" placeholder="Confirm Password">
+                    <button class="btn btn primary full">Sign Up</button>
+            </form>
+            <div class="no-account">
+                    <p>You're already have an account? <a href="/login" style="color: #F96709;">Login here</a></p>
+            </div>
+            <div class="or">
+                    or continue with
+            </div>
+            <div class="login-sosmed full">
+                <button class="btn btn-other-login btn-google full">
+                    <img src="icons/google.svg" width="32px" height="32px" alt="icon-google" />
+                    <span>Sign in with Google</span>
+                </button>
+                <button class="btn btn-other-login btn-facebook full">
+                    <img src="icons/facebook.svg" width="32px" height="32px" alt="icon-google" />
+                    <span>Sign in with Facebook</span>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %} %}
