@@ -1,0 +1,139 @@
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1536px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+
+.container::before {
+  content: "";
+  width: 360px;
+  height: 100vh;
+  background-color: #ffe5df;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+@media only screen and (min-width: 1920px) {
+  .container::before {
+    width: calc(140px + (100% - 1536px));
+  }
+}
+
+.book-info {
+  margin-top: 40px;
+  margin-left: 80px;
+  width: 600px;
+}
+
+.book-img {
+  position: sticky;
+  border-radius: 40px;
+  box-shadow: 0px 30px 64px rgba(121, 64, 28, 0.13);
+  margin-left: auto;
+  margin-right: 64px;
+  margin-top: -40px;
+  top: 0px;
+  width: 500px;
+  height: 750px;
+}
+
+.book-info .author {
+  font-size: 18px;
+}
+
+.book-info .book-title {
+  font-size: 72px;
+  font-weight: 700;
+}
+
+.more-info,
+.rating,
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.more-info > * {
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+.icon-star {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.number {
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.description-box {
+  margin: 32px 0 40px;
+  display: flex;
+  flex-direction: column-reverse;
+  line-height: 1.75;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.description-box label {
+  font-weight: 600;
+  color: var(--orange);
+  cursor: pointer;
+}
+
+.description-box label::before {
+  content: "Read more";
+}
+
+.description-box input {
+  display: none;
+}
+
+.description-box input#read-more:checked + label::before {
+  content: "Show less";
+}
+
+.description-box input#read-more:checked ~ .description {
+  display: block;
+}
+
+.additional-info {
+  margin-top: 100px;
+  padding: 40px;
+  box-shadow: 0px 8px 48px rgba(121, 64, 28, 0.08);
+}
+
+.additional-info .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.info-lists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.info-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.info-desc {
+  font-size: 14px;
+}

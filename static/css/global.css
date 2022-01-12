@@ -165,3 +165,11 @@ a.logo {
   transform: translateY(-50%);
   color: var(--disabled);
 }
+
+.rating-active {
+  color: #ffcd1d;
+}
+
+.rating-disabled {
+  color: #e7e2d2;
+}
