@@ -5,7 +5,18 @@
         <i class="icon-search"></i>
     </div>
     {% if session['user'] %}
-    <img class="user-pict" src="{{ session['user'].picture if session['user'].picture else url_for('static', filename='images/user.jpg') }}" alt="user-pict" />
+    <div class="user-box">
+        <label for="user-checkbox" class="user">
+            <img class="user-pict" src="{{ session['user'].picture if session['user'].picture else url_for('static', filename='images/user.jpg') }}" alt="user-pict" />
+        </label>
+        <input type="checkbox" class="user-checkbox" id="user-checkbox">
+        <div class="card user-menu">
+            <p>{{ session['user'].name }}</p>
+            <a href="/user/signout" class="btn primary">
+                Sign out
+            </a>
+        </div>
+    </div>
     {% else %}
     <a href="/login">
         <button class="btn primary">Login</button>

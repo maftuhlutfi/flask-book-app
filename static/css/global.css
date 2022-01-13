@@ -246,10 +246,37 @@ input:checked + .label-switch div::after {
   background-color: #f87171;
 }
 
+.user-box {
+  position: relative;
+}
+
 .user-pict {
   width: 48px;
   height: 48px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+}
+
+.user-checkbox {
+  display: none;
+}
+
+.user-menu {
+  position: absolute;
+  top: 105%;
+  right: 0;
+  flex-direction: column;
+  z-index: 40;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.user-menu p {
+  margin-bottom: 16px;
+}
+
+.user-checkbox:checked + .user-menu {
+  display: flex;
 }
