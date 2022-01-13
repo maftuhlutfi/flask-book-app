@@ -3,15 +3,15 @@
 <aside class="wrapper">
     <a href='/' class="logo">BookApp</a>
     <div class="menu-list">
-        <a href="/dashboard" class="menu">
+        <a href="/admin" class="menu">
             <i class="icon-category"></i>
             Dashboard
         </a>
-        <a href="/catalog" class="menu">
+        <a href="/admin/catalog" class="menu">
             <i class="icon-folder"></i>
             Catalog
         </a>
-        <a href="/scrap" class="menu">
+        <a href="/admin/scrap" class="menu">
             <i class="icon-paper-plus"></i>
             Scrap
         </a>
@@ -19,11 +19,11 @@
 </aside>
 
 <script>
-    const activePath = window.location.pathname
+    let activePath = window.location.pathname
     const menus = document.querySelectorAll('.menu')
 
     menus.forEach(m => {
-        if (m.href.includes(activePath)) {
+        if (m.pathname == activePath) {
             m.classList.add('active')
         }
     })
