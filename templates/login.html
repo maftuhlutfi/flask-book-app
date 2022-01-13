@@ -11,9 +11,9 @@
                 <h1>Login</h1>
                 <p>Please login to see book’s detail or use our search, filter, and sort</p>
             </div>
-            <form class="input-wrapper full">
-                <input class="full" id="username" type="text" placeholder="Username" autocomplete="off">
-                <input class="full" id="password" type="password" placeholder="Password" autocomplete="off">
+            <form class="input-wrapper full" id="login-form">
+                <input class="full" name="email" type="email" placeholder="Email" autocomplete="off">
+                <input class="full" name="password" type="password" placeholder="Password" autocomplete="off">
                 <button class="btn btn primary full">Login</button>
             </form>
             <div class="no-account text-secondary">
@@ -35,3 +35,8 @@
         </div>
     </div>
 {% endblock %} %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

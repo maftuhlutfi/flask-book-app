@@ -226,3 +226,22 @@ input:checked + .label-switch div::after {
   background: var(--linear-orange);
   left: 32px;
 }
+
+.msg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  color: white;
+  z-index: 50;
+  text-align: center;
+}
+
+.msg.success-msg {
+  background-color: #4ade80;
+}
+
+.msg.error-msg {
+  background-color: #f87171;
+}

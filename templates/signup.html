@@ -11,10 +11,11 @@
                 <h1>Sign up</h1>
                 <p>Please fill form below to start explore our features</p>
             </div>
-            <form id="signup-form" class="input-wrapper full" >
-                    <input class="full" name="email" type="text" placeholder="Email">
-                    <input class="full" name="password" type="password" placeholder="Password">
-                    <input class="full" name="confirm_password" type="password" placeholder="Confirm Password">
+            <form id="signup-form" action='/signup' method='post' class="input-wrapper full" >
+                    <input class="full" name="name" type="text" placeholder="Name" required>
+                    <input class="full" name="email" type="email" placeholder="Email" required>
+                    <input class="full" name="password" type="password" placeholder="Password" required>
+                    <input class="full" name="confirm_password" type="password" placeholder="Confirm Password" required>
                     <button type="submit" class="btn btn primary full">Sign Up</button>
             </form>
             <div class="no-account">

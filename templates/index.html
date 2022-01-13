@@ -13,9 +13,13 @@
             <input type="text" name="search" placeholder="Search books" /> 
             <i class="icon-search"></i>
         </div>
+        {% if session['user'] %}
+        {{ session['user'].email }}
+        {% else %}
         <a href="/login">
             <button class="btn primary">Login</button>
         </a>
+        {% endif %}
     </nav>
     <div class="container">
         <aside class="filter-wrapper">

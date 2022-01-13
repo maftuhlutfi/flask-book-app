@@ -24,15 +24,27 @@ def admin_required(f):
     
     return wrap
 
+def is_logged_in(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return redirect('/')
+        else:
+            return f(*args, **kwargs)
+    
+    return wrap
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/login')
+@is_logged_in
 def login_page():
     return render_template('login.html')
 
 @app.route('/signup')
+@is_logged_in
 def register():
     return render_template('signup.html')
 
@@ -41,7 +53,7 @@ def book(book_id):
     return render_template('book.html')
 
 @app.route('/admin')
-#@admin_required
+@admin_required
 def dashboard():
     return render_template('dashboard.html', post=json.dumps(['a']))
 
