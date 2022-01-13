@@ -2,7 +2,9 @@
 
 {% block title %} Home - Book Apps {% endblock %}
 
-{% block link %} <link rel="stylesheet" href="css/index.css"> {% endblock %}
+{% block link %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
 
 {% block content %}
     <nav class="nav">

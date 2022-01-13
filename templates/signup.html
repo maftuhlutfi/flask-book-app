@@ -2,8 +2,7 @@
 
 {% block title %} Register {% endblock %}
 {% block link %} 
-
-<link rel="stylesheet" href="css/registerstyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/registerstyle.css') }}">
 {% endblock %}
 {% block content %}
     <div class="container signup">
@@ -12,11 +11,11 @@
                 <h1>Sign up</h1>
                 <p>Please fill form below to start explore our features</p>
             </div>
-            <form class="input-wrapper full">
-                    <input class="full" id="email" type="text" placeholder="Email">
-                    <input class="full" id="password" type="password" placeholder="Password">
-                    <input class="full" id="password" type="password" placeholder="Confirm Password">
-                    <button class="btn btn primary full">Sign Up</button>
+            <form id="signup-form" class="input-wrapper full" >
+                    <input class="full" name="email" type="text" placeholder="Email">
+                    <input class="full" name="password" type="password" placeholder="Password">
+                    <input class="full" name="confirm_password" type="password" placeholder="Confirm Password">
+                    <button type="submit" class="btn btn primary full">Sign Up</button>
             </form>
             <div class="no-account">
                     <p>You're already have an account? <a href="/login" style="color: #F96709;">Login here</a></p>
@@ -36,4 +35,9 @@
             </div>
         </div>
     </div>
-{% endblock %} %}
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+{% endblock %}

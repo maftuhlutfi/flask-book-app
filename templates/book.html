@@ -2,7 +2,7 @@
 
 {% block title %} Book 1 {% endblock %}
 
-{% block link %} <link rel="stylesheet" href="css/book.css"> {% endblock %}
+{% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}"> {% endblock %}
 
 {% block content %}
     <nav class="nav">

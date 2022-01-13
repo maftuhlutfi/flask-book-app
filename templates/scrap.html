@@ -3,8 +3,8 @@
 {% block title %} Scrap {% endblock %}
 
 {% block link %} 
-<link rel="stylesheet" href="css/dashboardtop.css">
-<link rel="stylesheet" href="css/scrap.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardtop.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scrap.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
                     Scrap Book!
                 </h1>
             </div>
-            <img src="images/admin.jpg" alt="" srcset="">
+            <img src="{{ url_for('static', filename='images/admin.jpg') }}" alt="" srcset="">
         </div>
         <div class="card">
             <form class="scrap-form">
@@ -46,5 +46,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="js/scrap.js"></script>
+<script src="{{ url_for('static', filename='js/scrap.js') }}"></script>
 {% endblock %}

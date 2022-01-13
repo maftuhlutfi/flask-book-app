@@ -3,8 +3,8 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block link %} 
-<link rel="stylesheet" href="css/dashboardtop.css">
-<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardtop.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
                     Admin
                 </h1>
             </div>
-            <img src="images/admin.jpg" alt="" srcset="">
+            <img src="{{ url_for('static', filename='images/admin.jpg') }}" alt="" srcset="">
         </div>
         <div class="stats">
             <div class="card">
@@ -73,5 +73,5 @@
 
 {% block script %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="js/dashboard.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 {% endblock %}

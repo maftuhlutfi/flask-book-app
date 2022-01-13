@@ -3,8 +3,8 @@
 {% block title %} Catalog {% endblock %}
 
 {% block link %} 
-<link rel="stylesheet" href="css/dashboardtop.css">
-<link rel="stylesheet" href="css/catalog.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardtop.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/catalog.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
                     Catalog
                 </h1>
             </div>
-            <img src="images/admin.jpg" alt="" srcset="">
+            <img src="{{ url_for('static', filename='images/admin.jpg') }}" alt="" srcset="">
         </div>
         <div class="catalog-button-group">
             <button class="btn primary">Import CSV</button>
@@ -88,5 +88,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="js/catalog.js"></script>
+<script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
 {% endblock %}
