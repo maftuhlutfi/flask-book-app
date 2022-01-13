@@ -5,16 +5,7 @@
 {% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}"> {% endblock %}
 
 {% block content %}
-    <nav class="nav">
-        <a href='/' class="logo">BookApp</a>
-        <div class="search-input">
-            <input type="text" name="search" placeholder="Search books" /> 
-            <i class="icon-search"></i>
-        </div>
-        <a href="/login">
-            <button class="btn primary">Login</button>
-        </a>
-    </nav>
+    {% include 'nav.html' %}
     <div class="container">
         <div class="book-info">
             <span class="author text-secondary">Fanny Fatullah</span>

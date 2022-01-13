@@ -13,3 +13,11 @@ def signout():
 @app.route('/user/login', methods=['POST'])
 def login():
   return User().login()
+
+@app.route('/user/google')
+def google_login():
+  return User().google_login()
+
+@app.route('/user/google/callback')
+def google_callback():
+  return User().google_callback()

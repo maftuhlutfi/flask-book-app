@@ -245,3 +245,11 @@ input:checked + .label-switch div::after {
 .msg.error-msg {
   background-color: #f87171;
 }
+
+.user-pict {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}

@@ -67,6 +67,7 @@ def scrap():
 
 @app.route('/test')
 def test():
+    print(session)
     return jsonify({
         'message': 'asdasd'
     })
