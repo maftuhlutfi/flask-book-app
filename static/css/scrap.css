@@ -42,3 +42,8 @@ span.success {
   font-weight: 600;
   color: rgb(59, 201, 59);
 }
+
+a.book-detail-link {
+  font-weight: 600;
+  color: var(--orange);
+}

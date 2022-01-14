@@ -23,28 +23,33 @@
             <img src="{{ url_for('static', filename='images/admin.jpg') }}" alt="" srcset="">
         </div>
         <div class="card">
-            <form class="scrap-form">
-                <input class="full" type="text" placeholder="Title" name="title" id="title">
-                <textarea class="full link" type="text" placeholder="Link separated by coma (,)" name="title" id="title"></textarea>
+            <form id='scrap-form' class="scrap-form">
+                <input class="full" type="text" placeholder="Title" name="title" id="title" required>
+                <textarea class="full link" type="text" placeholder="Link separated by semicolon (;)" name="links" id="links" required></textarea>
                 <div class="scrap-btn-group">
-                    <button class="btn primary outlined">Clear</button>
-                    <button class="btn primary">Scrap!</button>
+                    <button type="reset" class="btn primary outlined">Clear</button>
+                    <button type="submit" class="btn primary">Scrap!</button>
                 </div>
             </form>
         </div>
         <div class="card card-scrap">
             <h3 class="card-title">Scrap Log</h3>
+            {% if not logs %}
+            <p style="text-align: center;background-color: var(--orange-2);padding: 16px;border-radius: 20px;">There are no scrap logs</p>
+            {% else %}
             <ul class="log-list">
-                {% for x in range(20) %}
+                {% for log in logs %}
                 <li>
-                    <strong>10:30:00 - Saturday 19/12/2021:</strong> Judul Scrap | Link Buku | <span class="success">Success</span> | Inserted/Updated to Database
+                    <strong>{{ log["created"].strftime("%Y-%m-%d: %H:%M:%S") }}</strong> | {{ log["title"] }} | {{ log["book"]["title"] }} | <span class="success">{{ log["status"] }}</span> | {{ log["db_action"] }} to Database | <a class="book-detail-link" href="/{{ log['book']['_id'] }}" target="_blank">Go to book detail page</a>
                 </li>
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
     </main>
 {% endblock %}
 
 {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ url_for('static', filename='js/scrap.js') }}"></script>
 {% endblock %}
