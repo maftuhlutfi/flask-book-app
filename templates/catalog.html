@@ -38,14 +38,15 @@
                 </tr>
             </thead>
             <tbody>
+                {% for book in books %}
                 <tr class="row-book">
                     <td width='5%'>1</td>
                     <td width='10%'>
-                        <img class="book-img" src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w60-h90" alt="book-img" />
+                        <img class="book-img" src="{{ book['image'] }}?fife=w60-h90" alt="book-img" />
                     </td>
-                    <td width='15%'>Note of Kim</td>
-                    <td width='15%'>Fanny Fatullah</td>
-                    <td width='15%'>2021</td>
+                    <td width='15%'>{{ book['title'] }}</td>
+                    <td width='15%'>{{ book['author'] }}</td>
+                    <td width='15%'>{{ book['published_date'].strftime("%b %d, %Y") }}</td>
                     <td width='10%'>
                         <input type="checkbox" id="status" class="input-switch" name="status" />
                         <label for="status" class="label-switch">
@@ -60,28 +61,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr class="row-book">
-                    <td width='5%'>1</td>
-                    <td width='10%'>
-                        <img class="book-img" src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w60-h90" alt="book-img" />
-                    </td>
-                    <td width='15%'>Note of Kim</td>
-                    <td width='15%'>Fanny Fatullah</td>
-                    <td width='15%'>2021</td>
-                    <td width='10%'>
-                        <input type="checkbox" id="status" class="input-switch" name="status" />
-                        <label for="status" class="label-switch">
-                            <div></div>
-                        </label>
-                    </td>
-                    <td width='20%'>
-                        <div class="action">
-                            <i class="icon-info icon-linear-primary"></i>
-                            <i class="icon-edit icon-linear-primary"></i>
-                            <i class="icon-delete icon-linear-primary"></i>
-                        </div>
-                    </td>
-                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </main>

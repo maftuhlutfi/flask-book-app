@@ -5,12 +5,18 @@ from flask import render_template
 @app.route('/admin')
 @admin_required
 def admin_dashboard():
-    return render_template('dashboard.html', post=json.dumps(['a']))
+    return render_template('dashboard.html')
 
 @app.route('/admin/catalog')
 @admin_required
 def admin_catalog():
-    return render_template('catalog.html')
+    cols = db.books.find()
+
+    books = []
+
+    for x in cols:
+        books.append(x)
+    return render_template('catalog.html', books=books)
 
 @app.route('/admin/scrap')
 @admin_required
