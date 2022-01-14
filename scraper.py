@@ -18,6 +18,8 @@ def scrap_func(links):
         rating_tag = soup.find_all("div", class_="BHMmbe")[0]
         additional_info_tag = soup.find_all("span", class_="htlgb")
 
+        print(additional_info_tag)
+
         scrap_data = {
             "title": title_tag.getText(),
             "image": image_tag['src'].replace('?fife=w200-h300', ''),

@@ -17,7 +17,7 @@ def index():
 
     for x in cols:
         books.append(x)
-        
+
     return render_template('index.html', books=books)
 
 @app.route('/login')
@@ -32,7 +32,9 @@ def register():
 
 @app.route('/<string:book_id>')
 def book(book_id):
-    return render_template('book.html')
+    book = db.books.find_one({ "_id": book_id })
+
+    return render_template('book.html', book=book)
 
 @app.route('/test')
 def test():

@@ -47,7 +47,8 @@
 }
 
 .book-info .book-title {
-  font-size: 72px;
+  font-size: 40px;
+  margin: 20px 0;
   font-weight: 700;
 }
 

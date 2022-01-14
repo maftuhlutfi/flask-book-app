@@ -8,8 +8,8 @@
     {% include 'nav.html' %}
     <div class="container">
         <div class="book-info">
-            <span class="author text-secondary">Fanny Fatullah</span>
-            <h1 class="book-title">Note of Kim</h1>
+            <span class="author text-secondary">{{ book['author'] }}</span>
+            <h1 class="book-title">{{ book['title'] }}</h1>
             <div class="more-info text-secondary">
                 <div class="rating">
                     <div class="stars">
@@ -19,44 +19,19 @@
                         <i class="icon-star rating-active"></i>
                         <i class="icon-star rating-disabled"></i>
                     </div>
-                    <p class="number">4.1</p>
+                    <p class="number">{{ book['rating'] }}</p>
                 </div>
-                <p>2021</p>
-                <p>Naura Books</p>
+                <p>{{ book['published_date'].strftime("%Y") }}</p>
+                <p>{{ book['publisher'] }}</p>
             </div>
             <div class="description-box">
                 <input type="checkbox" id="read-more">
                 <label for="read-more"></label>
                 <div class="description">
-                    Dalam hidup Kimmy, si bocah gembil berusia 3 tahun, yummy food mendadak tidak lagi menjadi daftar kebahagiaan nomor 1! Kini, yang dia inginkan adalah mama baru!
-                    
-                    
-                    Yang bisa masak sup ayam enak seperti Miss San.
-                    
-                    Yang bumbum-nya empuk seperti Miss San.
-                    
-                    Yang suka memeluknya seperti Miss San.
-                    
-                    Kimmy mana paham cinta antara orang dewasa. Bahwa papanya, Dinan, harus sekaligus mencari istri yang tepat, bukan sekadar mama baru untuknya. Trauma setelah diselingkuhi itu masih berdarah!
-    
-                    
-                    
-                    If Papa don't marry Miss San, aku cry cry!
-                    
-                    Papa love aku no more!
-    
-                    
-                    
-                    Feel sad,
-                    
-                    Kimmy
-                    
-                    
-                    
-                    [Mizan, Noura Publishing, Novel, Romance, Indonesia]
+                    {{ book['description'] }}
                 </div>
             </div>
-            <a href="#">
+            <a href="{{ book['link'] }}" target="_blank">
                 <button class="btn primary">Get this book</button>
             </a>
             <div class="card additional-info">
@@ -64,27 +39,35 @@
                 <div class="info-lists">
                     <div class="info">
                         <h5 class="info-title">Publisher</h5>
-                        <p class="info-desc text-secondary">Naura Books</p>
+                        <p class="info-desc text-secondary">{{ book['publisher'] }}</p>
                     </div>
                     <div class="info">
-                        <h5 class="info-title">Publisher</h5>
-                        <p class="info-desc text-secondary">Naura Books</p>
+                        <h5 class="info-title">Published Date</h5>
+                        <p class="info-desc text-secondary">{{ book['published_date'].strftime("%b %d, %Y") }}</p>
                     </div>
                     <div class="info">
-                        <h5 class="info-title">Publisher</h5>
-                        <p class="info-desc text-secondary">Naura Books</p>
+                        <h5 class="info-title">Genres</h5>
+                        <p class="info-desc text-secondary">
+                            {% for genre in book['genres'] %}
+                                {{ genre }}
+                            {% endfor %}
+                        </p>
                     </div>
                     <div class="info">
-                        <h5 class="info-title">Publisher</h5>
-                        <p class="info-desc text-secondary">Naura Books</p>
+                        <h5 class="info-title">Total Pages</h5>
+                        <p class="info-desc text-secondary">{{ book['total_pages'] }}</p>
                     </div>
                     <div class="info">
-                        <h5 class="info-title">Publisher</h5>
-                        <p class="info-desc text-secondary">Naura Books</p>
+                        <h5 class="info-title">Language</h5>
+                        <p class="info-desc text-secondary">{{ book['language'] }}</p>
+                    </div>
+                    <div class="info">
+                        <h5 class="info-title">ISBN</h5>
+                        <p class="info-desc text-secondary">{{ book['isbn'] }}</p>
                     </div>
                 </div>
             </div>
         </div>
-        <img class="book-img" src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w600-h900" alt="book-img" />
+        <img class="book-img" src="{{ book['image'] }}?fife=w600-h900" alt="book-img" />
     </div>
 {% endblock %} %}
