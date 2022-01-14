@@ -65,7 +65,7 @@ class User:
       return jsonify({ "error": "Email is not found" }), 401
 
     if user and pbkdf2_sha256.verify(data['password'], user['password']):
-      return self.start_session({'id': user['_id'], 'email': user['email'], 'name': user['name'], 'picture': user['picture']})
+      return self.start_session({'id': user['_id'], 'email': user['email'], 'name': user['name'], 'picture': user['picture'], 'is_admin': user['is_admin'] if 'is_admin' in user.keys() else False})
     else:
       return jsonify({ "error": "Password is wrong" }), 401
   

@@ -250,6 +250,10 @@ input:checked + .label-switch div::after {
   position: relative;
 }
 
+.user-box > * {
+  cursor: pointer;
+}
+
 .user-pict {
   width: 48px;
   height: 48px;
