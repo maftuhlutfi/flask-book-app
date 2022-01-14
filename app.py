@@ -11,7 +11,14 @@ db = client.book_app
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    cols = db.books.find()
+
+    books = []
+
+    for x in cols:
+        books.append(x)
+        
+    return render_template('index.html', books=books)
 
 @app.route('/login')
 @is_logged_in

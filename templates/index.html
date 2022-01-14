@@ -70,19 +70,19 @@
                 </div>
             </div>
             <div class="book-list">
-                {% for x in range(6) %}
-                <a href="#" class="book-item">
-                    <img src="https://books.google.com/books/publisher/content/images/frontcover/kqFQEAAAQBAJ?fife=w400-h600" alt="note-of-kim" />
+                {% for book in books %}
+                <a href="/{{ book['_id'] }}" class="book-item">
+                    <img src="{{ book['image'] }}?fife=w400-h600" alt="note-of-kim" />
                     <div class="rating-price">
                         <div class="rating">
                             <i class="icon-star"></i>
-                            4.2
+                            {{ book['rating'] }}
                         </div>
-                        <p class="price">$12</p>
+                        <p class="price">${{ book['price'] }}</p>
                     </div>
                     <div>
-                        <p class="title">Note of Kim</p>
-                        <span class="author text-secondary">Fanny Fatullah</span>
+                        <p class="title">{{ book['title'] }}</p>
+                        <span class="author text-secondary">{{ book['author'] }}</span>
                     </div>
                 </a>
                 {% endfor %}

@@ -15,6 +15,7 @@ def scrap_func(links):
         author_tag = soup.find_all("a", class_="hrTbp R8zArc")[0]
         description_tag = soup.find_all("div", jsname="bN97Pc")[0].span
         price_tag = soup.find_all("button", jsmodel="UfnShf")[0]
+        rating_tag = soup.find_all("div", class_="BHMmbe")[0]
         additional_info_tag = soup.find_all("span", class_="htlgb")
 
         scrap_data = {
@@ -30,7 +31,8 @@ def scrap_func(links):
             "genres": additional_info_tag[8].getText().split(" / "), 
             "price": float(price_tag.getText().replace(' Ebook', '').replace('$', '')),
             "link": url,
-            "_id": url.split("id=")[1]
+            "_id": url.split("id=")[1],
+            "rating": float(rating_tag.getText())
         }
 
         results.append(scrap_data)
