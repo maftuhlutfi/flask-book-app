@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from turtle import title
 import requests
 from bs4 import BeautifulSoup
 
@@ -16,21 +17,23 @@ def scrap_func(links):
         description_tag = soup.find_all("div", jsname="bN97Pc")[0].span
         price_tag = soup.find_all("button", jsmodel="UfnShf")[0]
         rating_tag = soup.find_all("div", class_="BHMmbe")[0]
-        additional_info_tag = soup.find_all("span", class_="htlgb")
+        additional_info_tag = soup.find_all("div", class_="hAyfc")
 
-        print(additional_info_tag)
+        additional_info_data = additional_info_to_object(additional_info_tag)
+
+        print(additional_info_data)
 
         scrap_data = {
             "title": title_tag.getText(),
             "image": image_tag['src'].replace('?fife=w200-h300', ''),
             "description": description_tag.getText(),
             "author": author_tag.getText(),
-            "publisher": additional_info_tag[0].getText(),
-            "published_date": get_datetime(additional_info_tag[2].getText()),
-            "total_pages": additional_info_tag[3].getText(),
-            "isbn": additional_info_tag[4].getText(),
-            "language": additional_info_tag[7].getText(),
-            "genres": additional_info_tag[8].getText().split(" / "), 
+            "publisher": additional_info_data['Publisher'],
+            "published_date": get_datetime(additional_info_data['Published on']),
+            "total_pages": additional_info_data['Pages'],
+            "isbn": additional_info_data['ISBN'] if 'ISBN' in additional_info_data.keys() else '',
+            "language": additional_info_data['Language'],
+            "genres": additional_info_data['Genres'].split(" / "), 
             "price": float(price_tag.getText().replace(' Ebook', '').replace('$', '')),
             "link": url,
             "_id": url.split("id=")[1],
@@ -49,3 +52,17 @@ def get_datetime(d):
     year = int(list_d[2])
 
     return datetime(year, month, date)
+
+def additional_info_to_object(infos):
+    lists = []
+
+    for info in infos:
+        print(info)
+        soup = BeautifulSoup(str(info), 'html.parser')
+        title = soup.find('div', class_='BgcNfc').getText()
+        value = soup.find('span', class_='htlgb').getText()
+
+        lists.append(title)
+        lists.append(value)
+    
+    return {lists[i]: lists[i + 1] for i in range(0, len(lists), 2)}
