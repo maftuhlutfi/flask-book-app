@@ -36,3 +36,7 @@ form.addEventListener('submit', async e => {
         createMessage('error', err.response.data.error)
     }
 })
+
+if (window.location.href.includes('filter-sort')) {
+    createMessage('error', 'Please login first.')
+}

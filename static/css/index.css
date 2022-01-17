@@ -9,7 +9,7 @@
 
 .filter-wrapper {
   flex-shrink: 0;
-  width: 320px;
+  width: 360px;
 }
 
 .filter-title {
@@ -38,7 +38,7 @@
   margin-bottom: 8px;
 }
 
-.filter-wrap ul {
+.filter-wrap .filter-list {
   list-style: none;
   display: flex;
   margin: 0;
@@ -46,17 +46,30 @@
   flex-wrap: wrap;
 }
 
-.filter-list li {
+.filter-list input[type="checkbox"] {
+  display: none;
+}
+
+.filter-list > div {
+  display: flex;
+  margin: 8px 16px 8px 0;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+}
+
+.filter-list label {
   padding: 8px 16px;
   border: solid 1px var(--orange-1);
   font-size: 14px;
   border-radius: 20px;
-  margin: 8px 16px 8px 0;
   cursor: pointer;
   text-transform: capitalize;
 }
 
-.filter-list li.active {
+.filter-list input:checked + label {
   background-color: var(--orange-2);
 }
 
@@ -171,4 +184,16 @@ main {
 
 .book-item .author {
   font-size: 12px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

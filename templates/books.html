@@ -17,41 +17,53 @@
             <div class="card filter-body">
                 <div class="filter-wrap">
                     <div class="title">Genre</div>
-                    <ul class="filter-list">
-                        <li class="filter-item active">
-                            Fiction
-                        </li>
-                        <li class="filter-item">
-                            Romance
-                        </li>
-                        <li class="filter-item">
-                            Sci-Fi
-                        </li>
-                        <li class="filter-item">
-                            Young Adult Fiction
-                        </li>
-                    </ul>
+                    <div class="filter-list">
+                        <div>
+                            <input type="checkbox" name="genre" id="fiction" value="fiction">
+                            <label for="fiction" class="filter-item active">
+                                Fiction
+                            </label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="genre" id="romance" value="romance">
+                            <label for="romance" class="filter-item active">
+                                Romance
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="filter-wrap">
                     <div class="title">Languages</div>
-                    <ul class="filter-list">
-                        <li class="filter-item active">
-                            Indonesian
-                        </li>
-                        <li class="filter-item">
-                            English
-                        </li>
-                    </ul>
+                    <div class="filter-list">
+                        <div>
+                            <input type="checkbox" name="language" id="english" value="English">
+                            <label for="english" class="filter-item active">
+                                English
+                            </label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="language" id="indonesian" value="Indonesian">
+                            <label for="indonesian" class="filter-item active">
+                                Indonesian
+                            </label>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="language" id="other" value="other">
+                            <label for="other" class="filter-item active">
+                                Other
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="filter-wrap">
                     <div class="title">Published Year</div>
                     <div class="published-year">
-                        <input type="text" />
+                        <input id="from-date" type="number" />
                         <span>-</span>
-                        <input type="text" />
+                        <input id="until-date" type="number" />
                     </div>
                 </div>
-                <button class="btn primary">Apply</button>
+                <button id="apply-btn" class="btn primary">Apply</button>
             </div>
         </aside>
         <main>

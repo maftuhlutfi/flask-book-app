@@ -15,24 +15,6 @@ db = client.book_app
 def index():
     return redirect('/books')
 
-@app.route('/books')
-def books():
-    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['', 'dsc']
-
-    field = 'published_date'
-
-    if sort_name != 'date' and sort_name != '':
-        field = sort_name
-
-    cols = db.books.find().sort(field, -1 if sort_mode == 'dsc' else 1)
-
-    books = []
-
-    for x in cols:
-        books.append(x)
-
-    return render_template('books.html', books=books)
-
 @app.route('/login')
 @is_logged_in
 def login_page():
@@ -42,12 +24,6 @@ def login_page():
 @is_logged_in
 def register():
     return render_template('signup.html')
-
-@app.route('/books/<string:book_id>')
-def book(book_id):
-    book = db.books.find_one({ "_id": book_id })
-
-    return render_template('book.html', book=book)
 
 @app.route('/test')
 def test():
@@ -64,6 +40,7 @@ def drop():
 from routes import user
 from routes import admin
 from routes import scrap
+from routes import books
 
 if __name__ == "__main__":
     app.config['TEMPLATES_AUTO_RELOAD']=True
