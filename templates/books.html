@@ -60,12 +60,12 @@
                 <div class="sort">
                     <label for="sort">Sort By</label>
                     <select id="sort" name="sort">
-                        <option value="newest">Newest</option>
-                        <option value="newest">Oldest</option>
-                        <option value="newest">Low Price</option>
-                        <option value="newest">High Price</option>
-                        <option value="newest">Top Rating</option>
-                        <option value="newest">Low Rating</option>
+                        <option value="date dsc">Newest</option>
+                        <option value="date asc">Oldest</option>
+                        <option value="price dsc">High Price</option>
+                        <option value="price asc">Low Price</option>
+                        <option value="rating dsc">Top Rating</option>
+                        <option value="rating asc">Low Rating</option>
                     </select>
                 </div>
             </div>
@@ -89,4 +89,8 @@
             </div>
         </main>
     </div>
-{% endblock %} %}
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/books.js') }}"></script>
+{% endblock %}

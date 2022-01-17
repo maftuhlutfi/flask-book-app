@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, session, redirect
+from flask import Flask, render_template, jsonify, session, redirect, request
 import pymongo
 from decorators import is_logged_in
 
@@ -17,7 +17,14 @@ def index():
 
 @app.route('/books')
 def books():
-    cols = db.books.find()
+    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['', 'dsc']
+
+    field = 'published_date'
+
+    if sort_name != 'date' and sort_name != '':
+        field = sort_name
+
+    cols = db.books.find().sort(field, -1 if sort_mode == 'dsc' else 1)
 
     books = []
 
