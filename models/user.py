@@ -35,6 +35,8 @@ class User:
     # Create the user object
     user = {
       "_id": uuid.uuid4().hex,
+      "role": "user",
+      "picture": None,
       **data
     }
 
@@ -45,7 +47,7 @@ class User:
     if db.users.find_one({ "email": user['email'] }):
       return jsonify({ "error": "Email address already in use" }), 400
 
-    if db.users.insert_one({**user, "picture": None}):
+    if db.users.insert_one(user):
       return jsonify({"message": "Signup success. Please login."})
 
     return jsonify({ "error": "Signup failed" }), 400
@@ -65,7 +67,7 @@ class User:
       return jsonify({ "error": "Email is not found" }), 401
 
     if user and pbkdf2_sha256.verify(data['password'], user['password']):
-      return self.start_session({'id': user['_id'], 'email': user['email'], 'name': user['name'], 'picture': user['picture'], 'is_admin': user['is_admin'] if 'is_admin' in user.keys() else False})
+      return self.start_session({'id': user['_id'], 'email': user['email'], 'name': user['name'], 'picture': user['picture'], 'role': user['role']})
     else:
       return jsonify({ "error": "Password is wrong" }), 401
   

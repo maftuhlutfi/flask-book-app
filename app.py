@@ -2,6 +2,8 @@ from flask import Flask, render_template, jsonify, session, redirect
 import pymongo
 from decorators import is_logged_in
 
+from scraper import scrap_func
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'flask-book-movie-kelompok'
 
@@ -11,6 +13,10 @@ db = client.book_app
 
 @app.route('/')
 def index():
+    return redirect('/books')
+
+@app.route('/books')
+def books():
     cols = db.books.find()
 
     books = []
@@ -18,7 +24,7 @@ def index():
     for x in cols:
         books.append(x)
 
-    return render_template('index.html', books=books)
+    return render_template('books.html', books=books)
 
 @app.route('/login')
 @is_logged_in
@@ -30,7 +36,7 @@ def login_page():
 def register():
     return render_template('signup.html')
 
-@app.route('/<string:book_id>')
+@app.route('/books/<string:book_id>')
 def book(book_id):
     book = db.books.find_one({ "_id": book_id })
 
@@ -38,7 +44,7 @@ def book(book_id):
 
 @app.route('/test')
 def test():
-    print(session)
+    scrap_func(['https://play.google.com/store/books/details/Fanny_Fatullah_Note_Of_Kim?id=kqFQEAAAQBAJ'])
     return jsonify({
         'message': 'asdasd'
     })
@@ -51,3 +57,7 @@ def drop():
 from routes import user
 from routes import admin
 from routes import scrap
+
+if __name__ == "__main__":
+    app.config['TEMPLATES_AUTO_RELOAD']=True
+    app.run(debug=True,use_reloader=True)
