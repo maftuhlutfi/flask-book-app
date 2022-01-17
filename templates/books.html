@@ -18,18 +18,14 @@
                 <div class="filter-wrap">
                     <div class="title">Genre</div>
                     <div class="filter-list">
+                        {% for genre in genres %}
                         <div>
-                            <input type="checkbox" name="genre" id="fiction" value="fiction">
-                            <label for="fiction" class="filter-item active">
-                                Fiction
+                            <input type="checkbox" name="genre" id="{{ genre }}" value="{{ genre }}">
+                            <label for="{{ genre }}" class="filter-item active">
+                                {{ genre }}
                             </label>
                         </div>
-                        <div>
-                            <input type="checkbox" name="genre" id="romance" value="romance">
-                            <label for="romance" class="filter-item active">
-                                Romance
-                            </label>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="filter-wrap">

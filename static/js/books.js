@@ -13,6 +13,13 @@ sort.addEventListener('change', e => {
 
 const applybtn = document.getElementById('apply-btn')
 
+const genreInput = document.querySelectorAll('input[name="genre"]')
+let genreParam = s.get('genre') ? s.get('genre').split(',') : []
+
+genreInput.forEach(g => {
+    g.checked = genreParam.includes(g.value)
+})
+
 const languagesInput = document.querySelectorAll('input[name="language"]')
 let languagesParams = s.get('languages') ? s.get('languages').split(',') : []
 
@@ -27,6 +34,19 @@ fromDate.value = s.get('from') || ''
 untilDate.value = s.get('until') || ''
 
 applybtn.addEventListener('click', e => {
+    const checkedGenre = document.querySelectorAll('input[name="genre"]:checked')
+    let genreVal = []
+
+    checkedGenre.forEach(l => {
+        genreVal = [...genreVal, l.value]
+    })
+
+    if (genreVal.length) {
+        s.set('genre', genreVal.join(','))
+    } else {
+        s.delete('genre')
+    }
+
     const checkedLanguages = document.querySelectorAll('input[name="language"]:checked')
     let languagesVal = []
 
