@@ -9,7 +9,7 @@ def books():
     from_date = request.args.get('from')
     until_date = request.args.get('until')
 
-    if 'logged_in' not in session and (sort_name or sort_mode or languages or from_date or until_date):
+    if 'logged_in' not in session and (sort_name or languages or from_date or until_date):
         return redirect('/login?from=filter-sort')
 
     field = 'published_date'
@@ -38,6 +38,9 @@ def books():
     
 @app.route('/books/<string:book_id>')
 def book(book_id):
+    if 'logged_in' not in session:
+        return redirect('/login?from=filter-sort')
+
     book = db.books.find_one({ "_id": book_id })
 
     return render_template('book.html', book=book)

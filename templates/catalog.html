@@ -40,7 +40,7 @@
             <tbody>
                 {% for book in books %}
                 <tr class="row-book">
-                    <td width='5%'>1</td>
+                    <td width='5%'>{{ loop.index }}</td>
                     <td width='10%'>
                         <img class="book-img" src="{{ book['image'] }}?fife=w60-h90" alt="book-img" />
                     </td>
@@ -48,7 +48,7 @@
                     <td width='15%'>{{ book['author'] }}</td>
                     <td width='15%'>{{ book['published_date'].strftime("%b %d, %Y") }}</td>
                     <td width='10%'>
-                        <input type="checkbox" id="status" class="input-switch" name="status" />
+                        <input type="checkbox" id="status" class="input-switch" name="status" checked="{{ book['enabled'] }}}" />
                         <label for="status" class="label-switch">
                             <div></div>
                         </label>

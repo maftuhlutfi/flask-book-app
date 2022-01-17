@@ -33,8 +33,8 @@ def scrap_func(links):
             "total_pages": additional_info_data['Pages'],
             "isbn": additional_info_data['ISBN'] if 'ISBN' in additional_info_data.keys() else '',
             "language": additional_info_data['Language'],
-            "genres": additional_info_data['Genres'].split(" / "), 
-            "price": float(price_tag.getText().replace(' Ebook', '').replace('$', '')),
+            "genres": additional_info_data['Genres'], 
+            "price": float(price_tag.getText().replace(' Ebook', '').replace('$', '').split(' ')[-1]),
             "link": url,
             "_id": url.split("id=")[1],
             "rating": float(rating_tag.getText())
@@ -60,9 +60,21 @@ def additional_info_to_object(infos):
         print(info)
         soup = BeautifulSoup(str(info), 'html.parser')
         title = soup.find('div', class_='BgcNfc').getText()
-        value = soup.find('span', class_='htlgb').getText()
+
+        if title == 'Genres':
+            value = soup.find_all('span', class_='htlgb')
+            value = list(map(map_genres, value))
+            value = list(set(value))
+        else:
+            value = soup.find('span', class_='htlgb').getText()
 
         lists.append(title)
         lists.append(value)
     
     return {lists[i]: lists[i + 1] for i in range(0, len(lists), 2)}
+
+def map_genres(genre):
+    soup = BeautifulSoup(str(genre), 'html.parser')
+    value = soup.find('span').getText().split(' / ')[0]
+
+    return value

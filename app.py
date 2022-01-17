@@ -27,9 +27,9 @@ def register():
 
 @app.route('/test')
 def test():
-    scrap_func(['https://play.google.com/store/books/details/Fanny_Fatullah_Note_Of_Kim?id=kqFQEAAAQBAJ'])
+    result = scrap_func(['https://play.google.com/store/books/details/Mark_Crilley_The_Drawing_Lesson?id=mdy1CgAAQBAJ'])
     return jsonify({
-        'message': 'asdasd'
+        'result': result
     })
 
 @app.route('/drop')

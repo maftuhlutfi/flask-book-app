@@ -2,10 +2,10 @@ const genreCanvas = document.getElementById('genre-chart');
 const genreChart = new Chart(genreCanvas, {
     type: 'pie',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: genreData.map(g => g.label),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
+            label: 'Total books',
+            data: genreData.map(g => g.value),
             backgroundColor: [
                 '#FF0000',
                 '#FF4D00',
@@ -36,10 +36,10 @@ const pubYearCanvas = document.getElementById('pub-year-chart');
 const pubYearChart = new Chart(pubYearCanvas, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: publishedDateData.map(p => p.label),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
+            label: 'Total books',
+            data: publishedDateData.map(p => p.value),
             backgroundColor: [
                 '#FF0000',
                 '#FF4D00',
@@ -66,10 +66,10 @@ const ratingCanvas = document.getElementById('rating-chart');
 const ratingChart = new Chart(ratingCanvas, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ratingsData.map(r => `${r.label}-${r.label + 1}`),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
+            label: 'Total books',
+            data: ratingsData.map(r => r.value),
             backgroundColor: [
                 '#FF0000',
                 '#FF4D00',
@@ -96,10 +96,10 @@ const languageCanvas = document.getElementById('language-chart');
 const languageChart = new Chart(languageCanvas, {
     type: 'pie',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: languagesData.map(l => l.label),
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2],
+            label: 'Total books',
+            data: languagesData.map(l => l.value),
             backgroundColor: [
                 '#FF0000',
                 '#FF4D00',

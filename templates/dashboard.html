@@ -26,12 +26,12 @@
             <div class="card">
                 <i class="icon-profile icon-linear-primary"></i>
                 <p class="text-secondary">Total Users</p>
-                <h3>12</h3>
+                <h3>{{ users_count }}</h3>
             </div>
             <div class="card">
                 <i class="icon-folder icon-linear-primary"></i>
                 <p class="text-secondary">Total Books</p>
-                <h3>12</h3>
+                <h3>{{ books_count }}</h3>
             </div>
         </div>
         <div class="charts">
@@ -73,5 +73,11 @@
 
 {% block script %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const genreData = {{ genre_data|tojson }}
+    const publishedDateData = {{ published_date_data|tojson }}
+    const ratingsData = {{ ratings_data|tojson }}
+    const languagesData = {{ languages_data|tojson }}
+</script>
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 {% endblock %}
