@@ -29,7 +29,7 @@ class Scrap:
             if (result["is_updated"]):
                 db.books.update_one({"_id": result["_id"]}, {"$set": {**result, "last_updated": now}})
             else:
-                db.books.insert_one({**result, "created": now, "last_updated": now})
+                db.books.insert_one({**result, "created": now, "last_updated": now, "enabled": True})
 
             log = {
                 "title": title,

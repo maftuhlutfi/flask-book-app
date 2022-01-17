@@ -21,7 +21,7 @@ def admin_catalog():
 @app.route('/admin/scrap')
 @admin_required
 def admin_scrap():
-    cols = db.scrap_logs.find()
+    cols = db.scrap_logs.find().sort('created', -1)
 
     logs = []
 

@@ -6,7 +6,7 @@
     </div>
     {% if session['user'] %}
     <div style="display: flex;align-items: center;">
-        {% if session['user'].is_admin %}
+        {% if session['user'].role == 'admin' %}
         <a href="/admin" class="btn primary outlined" style="margin-right: 20px;">Dashboard</a>
         {% endif %}
         <div class="user-box">
