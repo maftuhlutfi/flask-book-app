@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Book 1 {% endblock %}
+{% block title %} {{ book['title'] }} {% endblock %}
 
 {% block link %} <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}"> {% endblock %}
 
