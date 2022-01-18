@@ -8,6 +8,5 @@ Our app is using mongodb atlas cloud
 - Create virtual environment `py -m venv env`
 - Activate virtual environment `env\Scripts\activate`
 - Run `py -m pip install -r requirements.txt`
-- Go to mysite folder with `cd mysite`
 - Run `run`
 - Go to `localhost:5000`
