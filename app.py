@@ -27,14 +27,16 @@ def register():
 
 @app.route('/test')
 def test():
-    cols = db.books.find( { "$text": { "$search": "java coffee shop" } } )
+    #db.books.create_index([('title', pymongo.TEXT), ('author', pymongo.TEXT)], name='search', language_override='english')
+    cols = db.books.find({ "$text": { "$search": "selamat" } })
+
     books = []
 
     for x in cols:
         books.append(x)
 
     return jsonify({
-        'result': books
+        'books': books
     })
 
 @app.route('/drop')

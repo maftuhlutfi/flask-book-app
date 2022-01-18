@@ -41,3 +41,29 @@ const validateEmail = (email) => {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
 };
+
+const inputSearch = document.getElementById('search')
+
+inputSearch.addEventListener('input', async e => {
+    const { value } = e.target
+
+    const res = await axios.get(`/books/search?query=${value}`)
+    const { books } = await res.data
+
+    const searchResult = document.getElementById('search-result')
+    searchResult.innerHTML = ''
+
+    await books.forEach(b => {
+        const a = document.createElement('a')
+        a.href = `/books/${b._id}`
+        a.target = '_blank'
+        a.classList.add('search-result-item')
+        const img = document.createElement('img')
+        img.src = b.image
+        const p = document.createElement('p')
+        p.textContent = b.title
+        a.append(img)
+        a.append(p)
+        searchResult.append(a)
+    })
+})

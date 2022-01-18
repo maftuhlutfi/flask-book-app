@@ -1,8 +1,11 @@
 <nav class="nav">
     <a href='/' class="logo">BookApp</a>
     <div class="search-input">
-        <input type="text" name="search" placeholder="Search books" autocomplete="off" /> 
+        <input type="text" name="search" placeholder="Search books" autocomplete="off" id="search" /> 
         <i class="icon-search"></i>
+        <div id="search-result">
+
+        </div>
     </div>
     {% if session['user'] %}
     <div style="display: flex;align-items: center;">
@@ -17,3 +20,4 @@
     </a>
     {% endif %}
 </nav>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

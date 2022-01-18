@@ -172,6 +172,46 @@ a.logo {
   color: var(--disabled);
 }
 
+.search-input #search-result {
+  position: absolute;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 16px;
+  top: 100%;
+  margin-top: 8px;
+  width: 100%;
+  z-index: 10;
+}
+
+.search-input #search-result > div:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.search-result-item img {
+  width: 24px;
+  height: 32px;
+  object-fit: cover;
+  object-position: center;
+  margin-right: 16px;
+}
+
+.search-result-item p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .rating-active {
   color: #ffcd1d;
 }

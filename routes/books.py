@@ -2,11 +2,11 @@ from datetime import datetime
 from operator import ge
 from flask import Flask, render_template, jsonify, session, redirect, request
 from app import app, db
-from decorators import admin_required
+from decorators import admin_required, is_logged_in
 
 @app.route('/books')
 def books():
-    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['', 'dsc']
+    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['year', 'dsc']
     genre =  request.args.get('genre').split(',') if request.args.get('genre') != None else None
     languages =  request.args.get('languages').split(',') if request.args.get('languages') != None else None
     from_date = request.args.get('from')
@@ -57,6 +57,21 @@ def update_status(book_id):
     db.books.update_one({"_id": book_id}, {"$set": {"enabled": status}})
 
     return jsonify({"message": ("Enabled" if status else "Disabled") + " book with id " + book_id})
+
+@app.route('/books/search')
+def search_books():
+    query =  request.args.get('query') if request.args.get('query') != None else None
+
+    cols = db.books.find({ "$text": { "$search": query } })
+
+    books = []
+
+    for x in cols:
+        books.append(x)
+
+    return jsonify({
+        'books': books
+    })
 
 
 def get_language_with_other(lang):
