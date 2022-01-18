@@ -2,6 +2,7 @@ from datetime import datetime
 from operator import ge
 from flask import Flask, render_template, jsonify, session, redirect, request
 from app import app, db
+from decorators import admin_required
 
 @app.route('/books')
 def books():
@@ -47,6 +48,17 @@ def book(book_id):
 
     return render_template('book.html', book=book)
 
+@app.route('/books/<string:book_id>/update-status', methods=['PATCH'])
+@admin_required
+def update_status(book_id):
+    data = request.get_json(silent=True)
+    status = data["status"]
+
+    db.books.update_one({"_id": book_id}, {"$set": {"enabled": status}})
+
+    return jsonify({"message": ("Enabled" if status else "Disabled") + " book with id " + book_id})
+
+
 def get_language_with_other(lang):
     def_lang = ["English", "Indonesian"]
 
@@ -58,13 +70,13 @@ def get_language_with_other(lang):
     return def_lang
 
 def get_query_filter(genre, languages, from_date, until_date):
-    query = {}
+    query = {"enabled": True}
 
     if not genre and not languages and not from_date and not until_date:
-        return {}
+        return query
 
     if genre:
-        query = {"genres": {"$in": genre}}
+        query = {**query, "genres": {"$in": genre}}
 
     if languages:
         if 'other' not in languages:

@@ -12,6 +12,8 @@
 </head>
 <body>
     {% block content %} {% endblock %}
+    <div id="toast-group" class="toast-group">
+    </div>
 </body>
 <script src="{{ url_for('static', filename='js/global.js') }}"></script>
 {% block script %}

@@ -284,3 +284,47 @@ input:checked + .label-switch div::after {
 .user-checkbox:checked + .user-menu {
   display: flex;
 }
+
+.toast-group {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.toast {
+  width: 340px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 16px;
+}
+
+.toast div {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.toast.success {
+  border: solid 1px #1ad19b;
+}
+
+.toast.success div {
+  background-color: #1ad19b;
+}
+
+.toast.error {
+  border: solid 1px #ff4d4d;
+}
+
+.toast.error div {
+  background-color: #ff4d4d;
+}

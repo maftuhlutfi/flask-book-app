@@ -11,6 +11,29 @@ const createMessage = (type, message) => {
     }, 3000)
 }
 
+const createToast = (type, message) => {
+    const toastGroup = document.getElementById('toast-group')
+
+    const toast = document.createElement('div')
+    toast.classList.add('toast', type == 'error' ? 'error' : 'success')
+
+    const div = document.createElement('div')
+    toast.appendChild(div)
+
+    const span = document.createElement('span')
+    span.textContent = message
+
+    toast.append(div)
+    toast.append(span)
+
+    toastGroup.appendChild(toast)
+
+    const t = setTimeout(() => {
+        toastGroup.removeChild(toast)
+        clearTimeout(t)
+    }, 2000)
+}
+
 const validateEmail = (email) => {
     return String(email)
         .toLowerCase()

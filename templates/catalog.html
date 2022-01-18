@@ -48,8 +48,8 @@
                     <td width='15%'>{{ book['author'] }}</td>
                     <td width='15%'>{{ book['published_date'].strftime("%b %d, %Y") }}</td>
                     <td width='10%'>
-                        <input type="checkbox" id="status" class="input-switch" name="status" checked="{{ book['enabled'] }}}" />
-                        <label for="status" class="label-switch">
+                        <input type="checkbox" id="{{ book['_id'] }}" class="input-switch" name="status" {% if book['enabled'] %}checked{% endif %} />
+                        <label for="{{ book['_id'] }}" class="label-switch">
                             <div></div>
                         </label>
                     </td>
@@ -68,5 +68,6 @@
 {% endblock %}
 
 {% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="{{ url_for('static', filename='js/catalog.js') }}"></script>
 {% endblock %}
