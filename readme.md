@@ -5,8 +5,8 @@ BookApp is a book catalog application that displays books from Google Play Books
 Our app is using mongodb atlas cloud
 
 ## How to run
-- Create virtual environtment
-- Activate virtual environtment `env\Scripts\activate`
+- Create virtual environment `py -m venv env`
+- Activate virtual environment `env\Scripts\activate`
 - Run `py -m pip install -r requirements.txt`
 - Go to mysite folder with `cd mysite`
 - Run `run`
