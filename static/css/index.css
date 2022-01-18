@@ -1,7 +1,7 @@
 .container {
   margin: auto;
   margin-top: 32px;
-  padding: 0px 40px;
+  padding: 0px 40px 64px;
   max-width: 1536px;
   position: relative;
   display: flex;
@@ -178,8 +178,12 @@ main {
 }
 
 .book-item .title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .book-item .author {
