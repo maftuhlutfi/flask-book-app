@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Scrap {% endblock %}
+
+{% block link %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardtop.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/editbook.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% include 'adminnav.html' %}
+
+    <main class="admin-container">
+        <div class="dashboard-top-wrapper">
+            <div class="greet">
+                <p class="subtitle text-secondary">
+                    Fill the form below to
+                </p>
+                <h1 class="title">
+                    Scrap Book!
+                </h1>
+            </div>
+            {% include 'userbox.html' %}
+        </div>
+        <div class="card">
+            <form id='edit-form' class="edit-form">
+                <input class="full" type="text" placeholder="Title" name="title" id="title" required>
+                <textarea class="full link" type="text" placeholder="Link separated by semicolon (;)" name="links" id="links" required></textarea>
+                <div class="edit-btn-group">
+                    <button type="reset" class="btn primary outlined">Clear</button>
+                    <button type="submit" class="btn primary">Scrap!</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{{ url_for('static', filename='js/scrap.js') }}"></script>
+{% endblock %}

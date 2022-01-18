@@ -27,9 +27,14 @@ def register():
 
 @app.route('/test')
 def test():
-    result = scrap_func(['https://play.google.com/store/books/details/Mark_Crilley_The_Drawing_Lesson?id=mdy1CgAAQBAJ'])
+    cols = db.books.find( { "$text": { "$search": "java coffee shop" } } )
+    books = []
+
+    for x in cols:
+        books.append(x)
+
     return jsonify({
-        'result': result
+        'result': books
     })
 
 @app.route('/drop')

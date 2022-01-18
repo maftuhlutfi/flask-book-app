@@ -33,6 +33,11 @@ def admin_catalog():
         books.append(x)
     return render_template('catalog.html', books=books)
 
+@app.route('/admin/catalog/edit')
+@admin_required
+def edit_book():
+    return render_template('editbook.html')
+
 @app.route('/admin/scrap')
 @admin_required
 def admin_scrap():
