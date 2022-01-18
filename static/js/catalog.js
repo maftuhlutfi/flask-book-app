@@ -16,3 +16,22 @@ statusSwitches.forEach(s => {
         }
     })
 })
+
+const deleteButtons = document.querySelectorAll('#delete-btn')
+
+deleteButtons.forEach(d => {
+    d.addEventListener('click', async e => {
+        const id = e.target.dataset.bookId
+        try {
+            const res = await axios.delete(`/books/${id}/delete`)
+            const { message } = await res.data
+            createMessage('success', message)
+            const t = setTimeout(() => {
+                window.location.reload()
+                clearTimeout(t)
+            }, 2000)
+        } catch (err) {
+            createMessage('error', err.response.data.error)
+        }
+    })
+})

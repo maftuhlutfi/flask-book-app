@@ -58,11 +58,19 @@ def update_status(book_id):
 
     return jsonify({"message": ("Enabled" if status else "Disabled") + " book with id " + book_id})
 
+@app.route('/books/<string:book_id>/delete', methods=["delete"])
+def delete_book(book_id):
+    db.books.delete_one({ "_id": book_id })
+
+    return jsonify({
+        'message': 'Successfully delete book with id' + book_id
+    })
+
 @app.route('/books/search')
 def search_books():
     query =  request.args.get('query') if request.args.get('query') != None else None
 
-    cols = db.books.find({ "$text": { "$search": query } })
+    cols = db.books.find({ "status": True, "$text": { "$search": query } })
 
     books = []
 
