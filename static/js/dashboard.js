@@ -28,6 +28,16 @@ const genreChart = new Chart(genreCanvas, {
                     }
                 },
             }
+        },
+        onClick: (e) => {
+            const points = genreChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+
+            if (points.length) {
+                const firstPoint = points[0];
+                const label = genreChart.data.labels[firstPoint.index];
+
+                window.open(`/books?genre=${label}`)
+            }
         }
     }
 });
@@ -57,6 +67,16 @@ const pubYearChart = new Chart(pubYearCanvas, {
         plugins: {
             legend: {
                 display: false
+            }
+        },
+        onClick: (e) => {
+            const points = pubYearChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+
+            if (points.length) {
+                const firstPoint = points[0];
+                const label = pubYearChart.data.labels[firstPoint.index];
+
+                window.open(`/books?from=${label}&until=${label}`)
             }
         }
     }
@@ -121,6 +141,16 @@ const languageChart = new Chart(languageCanvas, {
                         size: 14
                     }
                 },
+            }
+        },
+        onClick: (e) => {
+            const points = languageChart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+
+            if (points.length) {
+                const firstPoint = points[0];
+                const label = languageChart.data.labels[firstPoint.index];
+
+                window.open(`/books?languages=${label}`)
             }
         }
     }
