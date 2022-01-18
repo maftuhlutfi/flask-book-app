@@ -19,7 +19,7 @@
                         <i class="icon-star rating-active"></i>
                         <i class="icon-star rating-disabled"></i>
                     </div>
-                    <p class="number">{{ book['rating'] }}</p>
+                    <p class="number">{{ book['rating'] }}  <span style="font-size: 16px;margin-left: 4px;font-weight: 500;">({{ book['total_rating']|int }} users)</span></p>
                 </div>
                 <p>{{ book['published_date'].strftime("%Y") }}</p>
                 <p>{{ book['publisher'] }}</p>

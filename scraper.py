@@ -17,11 +17,10 @@ def scrap_func(links):
         description_tag = soup.find_all("div", jsname="bN97Pc")[0].span
         price_tag = soup.find_all("button", jsmodel="UfnShf")[0]
         rating_tag = soup.find_all("div", class_="BHMmbe")[0]
+        total_rating_tag = soup.find('span', class_='AYi5wd ddprqc').span.getText().replace(',', '')
         additional_info_tag = soup.find_all("div", class_="hAyfc")
 
         additional_info_data = additional_info_to_object(additional_info_tag)
-
-        print(additional_info_data)
 
         scrap_data = {
             "title": title_tag.getText(),
@@ -37,7 +36,8 @@ def scrap_func(links):
             "price": float(price_tag.getText().replace(' Ebook', '').replace('$', '').split(' ')[-1]),
             "link": url,
             "_id": url.split("id=")[1],
-            "rating": float(rating_tag.getText())
+            "rating": float(rating_tag.getText()),
+            "total_rating": int(total_rating_tag)
         }
 
         results.append(scrap_data)
@@ -57,7 +57,6 @@ def additional_info_to_object(infos):
     lists = []
 
     for info in infos:
-        print(info)
         soup = BeautifulSoup(str(info), 'html.parser')
         title = soup.find('div', class_='BgcNfc').getText()
 

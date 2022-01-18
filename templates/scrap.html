@@ -33,14 +33,17 @@
             </form>
         </div>
         <div class="card card-scrap">
-            <h3 class="card-title">Scrap Log</h3>
+            <div style="display: flex;align-items: center;justify-content: space-between;">
+                <h3 class="card-title">Scrap Log</h3>
+                <p>Total scrapping: {{ logs|length }}</p>
+            </div>
             {% if not logs %}
             <p style="text-align: center;background-color: var(--orange-2);padding: 16px;border-radius: 20px;">There are no scrap logs</p>
             {% else %}
             <ul class="log-list">
                 {% for log in logs %}
                 <li>
-                    <strong>{{ log["created"].strftime("%Y-%m-%d: %H:%M:%S") }}</strong> | {{ log["title"] }} | {{ log["book"]["title"] }} | <span class="success">{{ log["status"] }}</span> | {{ log["db_action"] }} to Database | <a class="book-detail-link" href="/{{ log['book']['_id'] }}" target="_blank">Go to book detail page</a>
+                    <strong>{{ log["created"].strftime("%Y-%m-%d: %H:%M:%S") }}</strong> | {{ log["title"] }} | {{ log["book"]["title"] }} | <span class="success">{{ log["status"] }}</span> | {{ log["db_action"] }} to Database | <a class="book-detail-link" href="/books/{{ log['book']['_id'] }}" target="_blank">Go to book detail page</a>
                 </li>
                 {% endfor %}
             </ul>
