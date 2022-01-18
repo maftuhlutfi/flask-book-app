@@ -34,8 +34,7 @@ const genreChart = new Chart(genreCanvas, {
 
             if (points.length) {
                 const firstPoint = points[0];
-                const label = genreChart.data.labels[firstPoint.index];
-
+                const label = genreChart.data.labels[firstPoint.index].replace('&', '%26')
                 window.open(`/books?genre=${label}`)
             }
         }
