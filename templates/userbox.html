@@ -1,6 +1,12 @@
 <div class="user-box">
     <label for="user-checkbox" class="user">
-        <img class="user-pict" src="{{ session['user'].picture if session['user'].picture else url_for('static', filename='images/user.jpg') }}" alt="user-pict" />
+        <img class="user-pict" src="{{ session['user']['picture'] if session['user']['picture'] else url_for('static', filename='images/user.jpg') }}" alt="user-pict" />
+        {% if not session['user'].picture %}
+        <label for="avatar-input">
+            <i class="icon-edit"></i>
+        </label>
+        <input type="file" name="avatar" id="avatar-input">
+        {% endif %}
     </label>
     <input type="checkbox" class="user-checkbox" id="user-checkbox">
     <div class="card user-menu">
@@ -10,3 +16,24 @@
         </a>
     </div>
 </div>
+<script>
+    document.getElementById('avatar-input').addEventListener('change', async e => {
+        var formData = new FormData();
+        formData.append("image", e.target.files[0]);
+        try {
+            const res = await axios.post('/uploads/avatar', formData, {
+                headers: {
+                'Content-Type': 'multipart/form-data'
+                }
+            })
+            const { message } = await res.data
+            createMessage('success', message)
+            const t = setTimeout(() => {
+                window.location.reload()
+                clearTimeout(t)
+            }, 2000)
+        } catch (err) {
+            createMessage('error', err.response.data.error)
+        }
+    })
+</script>

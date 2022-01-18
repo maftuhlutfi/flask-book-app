@@ -294,6 +294,30 @@ input:checked + .label-switch div::after {
   cursor: pointer;
 }
 
+.user-box .user {
+  position: relative;
+}
+
+.user i {
+  display: none;
+  position: absolute;
+  background: var(--linear-orange);
+  padding: 4px;
+  border-radius: 8px;
+  top: -20px;
+  right: -28px;
+  font-size: 20px;
+  color: white;
+}
+
+.user-box:hover i {
+  display: block;
+}
+
+.user-box .user input {
+  display: none;
+}
+
 .user-pict {
   width: 48px;
   height: 48px;

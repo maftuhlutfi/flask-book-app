@@ -48,6 +48,7 @@ from routes import user
 from routes import admin
 from routes import scrap
 from routes import books
+from routes import uploads
 
 if __name__ == "__main__":
     app.config['TEMPLATES_AUTO_RELOAD']=True

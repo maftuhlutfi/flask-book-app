@@ -1,50 +1,64 @@
 .edit-form {
-    margin: 8px 0;
-  }
-  
-  .edit-form > *:not(:last-child) {
-    margin-bottom: 20px;
-  }
-  
-  textarea.link {
-    height: 140px;
-  }
-  
-  .edit-btn-group {
-    display: flex;
-    justify-content: end;
-  }
-  
-  .edit-btn-group button:first-child {
-    margin-right: 20px;
-  }
-  
-  .edit-scrap {
-    margin-top: 40px;
-  }
-  
-  .log-list {
-    height: 240px;
-    overflow-y: auto;
-    list-style: none;
-    padding: 16px;
-    background-color: var(--orange-2);
-    border-radius: 8px;
-  }
-  
-  .log-list li {
-    margin: 0;
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  
-  span.success {
-    font-weight: 600;
-    color: rgb(59, 201, 59);
-  }
-  
-  a.book-detail-link {
-    font-weight: 600;
-    color: var(--orange);
-  }
-  
+  display: flex;
+}
+
+.edit-form > div > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.edit-form > div img {
+  width: 400px;
+  margin-right: 32px;
+  flex-shrink: 0;
+  border-radius: 16px;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group > *:not(:last-child) {
+  margin-right: 20px;
+}
+
+textarea.link {
+  height: 140px;
+}
+
+.edit-btn-group {
+  display: flex;
+  justify-content: end;
+}
+
+.edit-btn-group button:first-child {
+  margin-right: 20px;
+}
+
+.edit-scrap {
+  margin-top: 40px;
+}
+
+.log-list {
+  height: 240px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 16px;
+  background-color: var(--orange-2);
+  border-radius: 8px;
+}
+
+.log-list li {
+  margin: 0;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+span.success {
+  font-weight: 600;
+  color: rgb(59, 201, 59);
+}
+
+a.book-detail-link {
+  font-weight: 600;
+  color: var(--orange);
+}
