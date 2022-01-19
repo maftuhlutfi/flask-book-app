@@ -22,6 +22,7 @@ def books():
         field = sort_name
 
     query_filter = get_query_filter(genre, languages, from_date, until_date)
+    print(field)
     
     cols = db.books.find(query_filter) 
 

@@ -52,11 +52,11 @@ def edit_book():
             "author": request.form.get('author'),
             "publisher": request.form.get('publisher'),
             "published_date": request.form.get('published_date'),
-            "total_pages": request.form.get('total_pages'),
+            "total_pages": int(request.form.get('total_pages')),
             "isbn": request.form.get('isbn'),
             "language": request.form.get('language'),
             "genre": request.form.get('genre'),
-            "price": request.form.get('price'),
+            "price": float(request.form.get('price')),
             "link": request.form.get('link')
         }
 
