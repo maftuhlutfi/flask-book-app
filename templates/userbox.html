@@ -1,12 +1,10 @@
 <div class="user-box">
     <label for="user-checkbox" class="user">
         <img class="user-pict" src="{{ session['user']['picture'] if session['user']['picture'] else url_for('static', filename='images/user.jpg') }}" alt="user-pict" />
-        {% if not session['user'].picture %}
         <label for="avatar-input">
             <i class="icon-edit"></i>
         </label>
         <input type="file" name="avatar" id="avatar-input">
-        {% endif %}
     </label>
     <input type="checkbox" class="user-checkbox" id="user-checkbox">
     <div class="card user-menu">
