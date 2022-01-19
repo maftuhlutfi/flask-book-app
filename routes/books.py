@@ -72,12 +72,13 @@ def delete_book(book_id):
 def search_books():
     query =  request.args.get('query') if request.args.get('query') != None else None
 
-    cols = db.books.find({ "status": True, "$text": { "$search": query } })
-
     books = []
+    print(query)
 
-    for x in cols:
-        books.append(x)
+    if query:
+        cols = db.books.find({ "enabled": True, "$text": { "$search": query } })
+        for x in cols:
+            books.append(x)
 
     return jsonify({
         'books': books
