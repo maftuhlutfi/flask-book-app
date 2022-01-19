@@ -6,15 +6,16 @@ from decorators import admin_required, is_logged_in
 
 @app.route('/books')
 def books():
-    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['year', 'dsc']
+    sort_name, sort_mode = request.args.get('sort').split(' ') if request.args.get('sort') != None else ['', 'dsc']
     genre =  request.args.get('genre').split(',') if request.args.get('genre') != None else None
     languages =  request.args.get('languages').split(',') if request.args.get('languages') != None else None
     from_date = request.args.get('from')
     until_date = request.args.get('until')
 
-    if 'logged_in' not in session and (genre or sort_name or languages or from_date or until_date):
+    if ('logged_in' not in session and (genre or sort_name or languages or from_date or until_date)):
         return redirect('/login?from=filter-sort')
 
+    sort_name = 'year'
     field = 'published_date'
 
     if sort_name != 'date' and sort_name != '':
