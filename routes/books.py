@@ -15,7 +15,7 @@ def books():
     if ('logged_in' not in session and (genre or sort_name or languages or from_date or until_date)):
         return redirect('/login?from=filter-sort')
 
-    sort_name = 'year'
+    sort_name = 'year' if sort_name == '' else sort_name
     field = 'published_date'
 
     if sort_name != 'date' and sort_name != '':
