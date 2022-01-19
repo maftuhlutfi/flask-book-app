@@ -13,11 +13,12 @@
             <div class="more-info text-secondary">
                 <div class="rating">
                     <div class="stars">
+                        {% for x in range(book['rating']|int) %}
                         <i class="icon-star rating-active"></i>
-                        <i class="icon-star rating-active"></i>
-                        <i class="icon-star rating-active"></i>
-                        <i class="icon-star rating-active"></i>
+                        {% endfor %}
+                        {% for x in range(5 - book['rating']|int) %}
                         <i class="icon-star rating-disabled"></i>
+                        {% endfor %}
                     </div>
                     <p class="number">{{ book['rating'] }}  <span style="font-size: 16px;margin-left: 4px;font-weight: 500;">({{ book['total_rating']|int }} users)</span></p>
                 </div>
