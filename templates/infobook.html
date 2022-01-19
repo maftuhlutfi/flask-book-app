@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Book {% endblock %}
+
+{% block link %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboardtop.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/infobook.css') }}">
+{% endblock %}
+
+{% block content %}
+    {% include 'adminnav.html' %}
+
+    <main class="admin-container">
+        <div class="dashboard-top-wrapper">
+            <div class="greet">
+                <p class="subtitle text-secondary">
+                    Info
+                </p>
+                <h1 class="title">
+                    Book
+                </h1>
+            </div>
+            {% include 'userbox.html' %}
+        </div>
+        
+        <div class="card card-info">
+            <img src="{{ book['image'] }}?fife=w600-h900" alt="book-img">
+            <div class="info-lists">
+                <div class="info-item">
+                    <h5>id</h5>
+                    <p>{{ book['_id'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Title</h5>
+                    <p>{{ book['title'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Author</h5>
+                    <p>{{ book['author'] }}</p>
+                </div>
+                <div class="info-item" style="-ms-grid-column-span: 3;">
+                    <h5>Description</h5>
+                    <p>{{ book['description'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Publisher</h5>
+                    <p>{{ book['publisher'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Publisher Date</h5>
+                    <p>{{ book['publisher_date'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Total Pages</h5>
+                    <p>{{ book['total_pages'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>ISBN</h5>
+                    <p>{{ book['isbn'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Language</h5>
+                    <p>{{ book['language'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Genre</h5>
+                    <p>{{ book['genres'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Price</h5>
+                    <p>{{ book['price'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Link</h5>
+                    <p>{{ book['link'] }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Created</h5>
+                    <p>{{ book['created'].strftime("%b %d, %Y") }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Last Updated</h5>
+                    <p>{{ book['last_updated'].strftime("%b %d, %Y") }}</p>
+                </div>
+                <div class="info-item">
+                    <h5>Rating</h5>
+                    <p>{{ book['rating'] }} ({{ book['total_rating'] }} users)</p>
+                </div>
+                <div class="info-item">
+                    <h5>Status</h5>
+                    <p>{{ 'Enabled' if book['enabled'] else 'Disabled' }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

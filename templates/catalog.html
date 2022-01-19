@@ -22,9 +22,9 @@
             </div>
             {% include 'userbox.html' %}
         </div>
-        <div class="catalog-button-group">
+        <!-- <div class="catalog-button-group">
             <button class="btn primary">Import CSV</button>
-        </div>
+        </div> -->
         <table class="catalog-table" cellspacing='0' cellpadding="0">
             <thead>
                 <tr class="row-head">
@@ -55,7 +55,9 @@
                     </td>
                     <td width='20%'>
                         <div class="action">
-                            <i class="icon-info icon-linear-primary"></i>
+                            <a href="/admin/catalog/info?id={{ book['_id'] }}">
+                                <i class="icon-info icon-linear-primary"></i>
+                            </a>
                             <a href="/admin/catalog/edit?id={{ book['_id'] }}">
                                 <i class="icon-edit icon-linear-primary"></i>
                             </a>

@@ -71,7 +71,14 @@ def edit_book():
 
         db.books.update_one({"_id": book_id}, {"$set": {**books_data, 'published_date': published_date, 'last_updated': datetime.now()}})
         return jsonify({"message": "Successfully edit book"})
-        
+
+@app.route('/admin/catalog/info', methods=["GET", "PUT"])
+@admin_required
+def info_book():
+    book_id = request.args.get('id')
+    book = db.books.find_one({ "_id": book_id })
+    return render_template('infobook.html', book=book)
+
 
 @app.route('/admin/scrap')
 @admin_required
