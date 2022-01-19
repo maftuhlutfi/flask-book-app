@@ -45,7 +45,7 @@
                         <input class="full" type="text" placeholder="Language" name="language" id="title"  value="{{ book['language'] }}" required>
                     </div>
                     <div class="input-group">
-                        <input class="full" type="text" placeholder="Genres" name="genre" id="title" value="{{ book['genre'] }}">
+                        <input class="full" type="text" placeholder="Genres" name="genre" id="title" value="{{ book['genres']|join(' | ') }}">
                         <input class="full" type="number" placeholder="Prices" name="price" id="title"  value="{{ book['price'] }}" required>
                         <input class="full" type="url" placeholder="Link" name="link" id="title" value="{{ book['link'] }}" required>
                     </div>

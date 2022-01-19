@@ -38,17 +38,17 @@
                     <h5>Author</h5>
                     <p>{{ book['author'] }}</p>
                 </div>
-                <div class="info-item" style="-ms-grid-column-span: 3;">
-                    <h5>Description</h5>
-                    <p>{{ book['description'] }}</p>
-                </div>
                 <div class="info-item">
                     <h5>Publisher</h5>
                     <p>{{ book['publisher'] }}</p>
                 </div>
+                <div class="info-item" style="grid-column: 1 / 5;">
+                    <h5>Description</h5>
+                    <p>{{ book['description'] }}</p>
+                </div>
                 <div class="info-item">
-                    <h5>Publisher Date</h5>
-                    <p>{{ book['publisher_date'] }}</p>
+                    <h5>Published Date</h5>
+                    <p>{{ book['published_date'].strftime("%b %d, %Y") }}</p>
                 </div>
                 <div class="info-item">
                     <h5>Total Pages</h5>
@@ -64,15 +64,15 @@
                 </div>
                 <div class="info-item">
                     <h5>Genre</h5>
-                    <p>{{ book['genres'] }}</p>
+                    <p>{{ book['genres']|join(' | ') }}</p>
                 </div>
                 <div class="info-item">
                     <h5>Price</h5>
-                    <p>{{ book['price'] }}</p>
+                    <p>${{ book['price'] }}</p>
                 </div>
                 <div class="info-item">
                     <h5>Link</h5>
-                    <p>{{ book['link'] }}</p>
+                    <a href={{ book['link'] }} style="font-weight: 600;color: var(--orange);">Play Books Link</a>
                 </div>
                 <div class="info-item">
                     <h5>Created</h5>
