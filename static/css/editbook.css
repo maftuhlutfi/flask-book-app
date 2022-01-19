@@ -7,10 +7,34 @@
 }
 
 .edit-form > div img {
-  width: 400px;
+  width: 320px;
   margin-right: 32px;
   flex-shrink: 0;
   border-radius: 16px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container * {
+  cursor: pointer;
+}
+
+.image-container i {
+  position: absolute;
+  background: var(--linear-orange);
+  padding: 8px;
+  border-radius: 16px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: white;
+}
+
+.image-container input {
+  display: none;
 }
 
 .input-group {

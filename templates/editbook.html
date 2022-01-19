@@ -24,29 +24,32 @@
         </div>
         <div class="card">
             <form id='edit-form' class="edit-form">
-                <div>
-                    <img src="https://books.google.com/books/publisher/content/images/frontcover/dB3BDwAAQBAJ" alt="book-img">
+                <div class="image-container">
+                    <label for="book-image">
+                        <img src="{{ book['image'] }}?fife=w600-h900" alt="book-img">
+                        <i class="icon-edit"></i>
+                    </label>
+                    <input type="file" name='book-image' id="book-image">
                 </div>
                 <div class="full">
-                    <input class="full" type="text" placeholder="Title" name="Tittle" id="title" required>
-                    <textarea class="full link" type="text" placeholder="Description" name="links" id="links" required></textarea>
+                    <input class="full" type="text" placeholder="Title" name="title" id="title" value="{{ book['title'] }}" required>
+                    <textarea class="full link" type="text" placeholder="Description" name="description" id="links" value="{{ book['description'] }}" required>{{ book['description'] }}</textarea>
                     <div class="input-group">
-                        <input class="full" type="text" placeholder="Author" name="Tittle" id="title" required>
-                        <input class="full" type="text" placeholder="Publisher" name="Tittle" id="title" required>
-                        <input class="full" type="date" placeholder="Published Date" name="Tittle" id="title" required>
+                        <input class="full" type="text" placeholder="Author" name="author" id="title" value="{{ book['author'] }}" required>
+                        <input class="full" type="text" placeholder="Publisher" name="publisher" id="title" value="{{ book['publisher'] }}" required>
+                        <input class="full" type="date" placeholder="Published Date" name="published_date" id="title" value="{{ book['published_date'].strftime("%Y-%m-%d") }}" required>
                     </div>
                     <div class="input-group">
-                        <input class="full" type="number" placeholder="Total Pages" name="Tittle" id="title" required>
-                        <input class="full" type="text" placeholder="ISBN" name="Tittle" id="title" required>
-                        <input class="full" type="text" placeholder="Language" name="Tittle" id="title" required>
+                        <input class="full" type="number" placeholder="Total Pages" name="total_pages" id="title" value="{{ book['total_pages'] }}" required>
+                        <input class="full" type="text" placeholder="ISBN" name="isbn" id="title"  value="{{ book['isbn'] }}" required>
+                        <input class="full" type="text" placeholder="Language" name="language" id="title"  value="{{ book['language'] }}" required>
                     </div>
                     <div class="input-group">
-                        <input class="full" type="text" placeholder="Genres" name="Tittle" id="title" required>
-                        <input class="full" type="number" placeholder="Prices" name="Tittle" id="title" required>
-                        <input class="full" type="url" placeholder="Link" name="Tittle" id="title" required>
+                        <input class="full" type="text" placeholder="Genres" name="genre" id="title" value="{{ book['genre'] }}">
+                        <input class="full" type="number" placeholder="Prices" name="price" id="title"  value="{{ book['price'] }}" required>
+                        <input class="full" type="url" placeholder="Link" name="link" id="title" value="{{ book['link'] }}" required>
                     </div>
                     <div class="edit-btn-group">
-                        <button type="reset" class="btn primary outlined">Clear</button>
                         <button type="submit" class="btn primary">Save</button>
                     </div>
                 </div>
@@ -57,5 +60,84 @@
 
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="{{ url_for('static', filename='js/scrap.js') }}"></script>
+<script>
+    const book_id = {{ book['_id']|tojson }}
+
+    function getBase64(file, img) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            img.src = reader.result;
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+
+    var formData = new FormData();
+
+    document.getElementById('book-image').addEventListener('change', async e => {
+        const img = document.querySelector('.image-container label img')
+        formData.append('image', e.target.files[0])
+        getBase64(e.target.files[0], img)
+    })
+
+    document.getElementById('edit-form').addEventListener('submit', async e => {
+        e.preventDefault()
+        const data = new FormData(document.getElementById('edit-form'))
+        data.append('title', 'title')
+        data.append('description', 'description')
+        data.append('author', 'author')
+        data.append('publisher', 'publisher')
+        data.append('published_date', 'published_date')
+        data.append('total_pages', 'total_pages')
+        data.append('isbn', 'isbn')
+        data.append('language', 'language')
+        data.append('genre', 'genre')
+        data.append('price', 'price')
+        data.append('link', 'link')
+
+
+        let title = data.get('title'),
+            description = data.get('description'),
+            author = data.get('author'),
+            publisher = data.get('publisher'),
+            published_date = data.get('published_date'),
+            total_pages = data.get('total_pages'),
+            isbn = data.get('isbn'),
+            language = data.get('language'),
+            genre = data.get('genre'),
+            price = data.get('price'),
+            link = data.get('link')
+
+        formData.append('id', book_id)
+        formData.append('title', title)
+        formData.append('description', description)
+        formData.append('author', author)
+        formData.append('publisher', publisher)
+        formData.append('published_date', published_date)
+        formData.append('total_pages', total_pages)
+        formData.append('isbn', isbn)
+        formData.append('language', language)
+        formData.append('genre', genre)
+        formData.append('price', price)
+        formData.append('link', link)
+
+        try {
+            const res = await axios.put('/admin/catalog/edit', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            const { message } = await res.data
+            createMessage('success', message)
+            const t = setTimeout(() => {
+                window.location.reload()
+                clearTimeout(t)
+            }, 2000)
+        } catch (err) {
+            createMessage('error', err.response.data.error)
+        }
+    })
+</script>
 {% endblock %}

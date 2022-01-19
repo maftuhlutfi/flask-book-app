@@ -42,7 +42,7 @@
                 <tr class="row-book">
                     <td width='5%'>{{ loop.index }}</td>
                     <td width='10%'>
-                        <img class="book-img" src="{{ book['image'] }}?fife=w60-h90" alt="book-img" />
+                        <img class="book-img" width="60px" src="{{ book['image'] }}?fife=w60-h90" alt="book-img" />
                     </td>
                     <td width='15%'>{{ book['title'] }}</td>
                     <td width='15%'>{{ book['author'] }}</td>
@@ -56,7 +56,9 @@
                     <td width='20%'>
                         <div class="action">
                             <i class="icon-info icon-linear-primary"></i>
-                            <i class="icon-edit icon-linear-primary"></i>
+                            <a href="/admin/catalog/edit?id={{ book['_id'] }}">
+                                <i class="icon-edit icon-linear-primary"></i>
+                            </a>
                             <i class="icon-delete icon-linear-primary" id="delete-btn" data-book-id="{{ book['_id'] }}"></i>
                         </div>
                     </td>

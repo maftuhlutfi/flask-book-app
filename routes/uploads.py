@@ -31,3 +31,7 @@ def upload_avatar():
 @app.route('/uploads/avatar/<name>')
 def get_avatar(name):
     return send_from_directory('uploads/avatar/', name)
+
+@app.route('/uploads/books-image/<name>')
+def get_book_image(name):
+    return send_from_directory('uploads/books-image/', name)

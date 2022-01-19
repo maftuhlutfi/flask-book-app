@@ -1,7 +1,9 @@
+from datetime import datetime
 import math
 from decorators import admin_required
 from app import app, db
-from flask import render_template
+from flask import render_template, request, jsonify
+import os
 
 @app.route('/admin')
 @admin_required
@@ -33,10 +35,43 @@ def admin_catalog():
         books.append(x)
     return render_template('catalog.html', books=books)
 
-@app.route('/admin/catalog/edit')
+@app.route('/admin/catalog/edit', methods=["GET", "PUT"])
 @admin_required
 def edit_book():
-    return render_template('editbook.html')
+    if request.method == "GET":
+        book_id = request.args.get('id')
+        book = db.books.find_one({ "_id": book_id })
+        return render_template('editbook.html', book=book)
+    if request.method == 'PUT':
+        file = request.files['image'] if request.files else None
+        book_id = request.form.get('id')
+
+        books_data = {
+            "title": request.form.get('title'),
+            "description": request.form.get('description'),
+            "author": request.form.get('author'),
+            "publisher": request.form.get('publisher'),
+            "published_date": request.form.get('published_date'),
+            "total_pages": request.form.get('total_pages'),
+            "isbn": request.form.get('isbn'),
+            "language": request.form.get('language'),
+            "genre": request.form.get('genre'),
+            "price": request.form.get('price'),
+            "link": request.form.get('link')
+        }
+
+        list_pub_data = books_data['published_date'].split('-')
+        published_date = datetime(int(list_pub_data[0]), int(list_pub_data[1]), int(list_pub_data[2]))
+
+        if file:
+            extension = file.filename.rsplit('.', 1)[1]
+            file.save(os.path.join('uploads/books-image', book_id + '.' + extension))
+            path = '/uploads/books-image/' + book_id + '.' + extension
+            books_data = {**books_data, 'image': path}
+
+        db.books.update_one({"_id": book_id}, {"$set": {**books_data, 'published_date': published_date, 'last_updated': datetime.now()}})
+        return jsonify({"message": "Successfully edit book"})
+        
 
 @app.route('/admin/scrap')
 @admin_required
