@@ -25,7 +25,7 @@ def upload_avatar():
         file.save(os.path.join('uploads/avatar', session['user']['id'] + '.' + extension))
         path = '/uploads/avatar/' + session['user']['id'] + '.' + extension
         db.users.update_one({"_id": session['user']['id']}, {"$set": {"picture": path}})
-        session['user']['picture'] = path
+        session['user'] = {**session['user'], "picture": path}
         return jsonify({"message": "Successfully change avatar"})
 
 @app.route('/uploads/avatar/<name>')
